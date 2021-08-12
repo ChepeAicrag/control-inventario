@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Catalogo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class CatalogoController extends Controller
 {
@@ -24,7 +25,7 @@ class CatalogoController extends Controller
      */
     public function create()
     {
-        //
+        return view('Catalogo/crear');
     }
 
     /**
@@ -35,7 +36,15 @@ class CatalogoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nombre = $request->nombre;
+        $descripcion = $request->descripcion;
+        $status_Delete = 1;
+
+        Catalogo::create([
+            'nombre' => $nombre, 'descripcion' => $descripcion, 'status_delete' => $status_Delete
+        ]);
+
+        return redirect()->to('Crear-catalogo');
     }
 
     /**
@@ -46,7 +55,11 @@ class CatalogoController extends Controller
      */
     public function show(Catalogo $catalogo)
     {
-        //
+        //$ver = Catalogo::all();
+        $ver = Catalogo::select('id','nombre','descripcion','created_at')
+        ->where('status_delete',1)
+        ->get();
+        return view('Catalogo/mostrar',compact('ver'));
     }
 
     /**
@@ -57,7 +70,7 @@ class CatalogoController extends Controller
      */
     public function edit(Catalogo $catalogo)
     {
-        //
+        return view('Catalogo/editar',compact('catalogo'));
     }
 
     /**
@@ -69,7 +82,17 @@ class CatalogoController extends Controller
      */
     public function update(Request $request, Catalogo $catalogo)
     {
-        //
+        $nombre = $request->nombre;
+        $descripcion = $request->descripcion;
+        $id = $request->id;
+
+        Catalogo::select('id','nombre','descripcion')
+        ->where('id',$id)
+        ->update([
+            'nombre' => $nombre, 'descripcion' => $descripcion
+        ]);
+
+        return redirect()->to('Mostrar-catalogo');
     }
 
     /**
@@ -78,8 +101,13 @@ class CatalogoController extends Controller
      * @param  \App\Models\Catalogo  $catalogo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Catalogo $catalogo)
+    public function destroy($catalogo)
     {
-        //
+        Catalogo::select('id','nombre','descripcion')
+        ->where('id',$catalogo)
+        ->update([
+            'status_delete' => 0
+        ]);
+        return redirect()->to('Mostrar-catalogo');
     }
 }

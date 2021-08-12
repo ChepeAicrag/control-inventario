@@ -19,15 +19,10 @@ Route::get('/', function () {
 });
 
 Route::get('Crear-bodega','App\Http\Controllers\BodegaController@create');
-
 Route::get('Mostrar-bodega','App\Http\Controllers\BodegaController@show');
-
 Route::get('Editar-bodega/{bodega}','App\Http\Controllers\BodegaController@edit');
-
 Route::get('Baja-bodega/{bodega}','App\Http\Controllers\BodegaController@destroy');
-
 Route::post('Guardar-bodega','App\Http\Controllers\BodegaController@store');
-
 Route::post('Actualizar-bodega','App\Http\Controllers\BodegaController@update');
 
 Route::get('Categoria-alta','App\Http\Controllers\CategoriaController@create');
@@ -36,3 +31,10 @@ Route::get('Categoria-ver','App\Http\Controllers\CategoriaController@show');
 Route::get('Categoria-editar/{id}','App\Http\Controllers\CategoriaController@edit');
 Route::post('Categoria-actualizar','App\Http\Controllers\CategoriaController@update');
 Route::get('Categoria-baja/{id}','App\Http\Controllers\CategoriaController@destroy');
+
+Route::get('Crear-catalogo','App\Http\Controllers\CatalogoController@create');
+Route::post('Guardar-catalogo','App\Http\Controllers\CatalogoController@store');
+Route::get('Mostrar-catalogo','App\Http\Controllers\CatalogoController@show');
+Route::get('Editar-catalogo/{catalogo}','App\Http\Controllers\CatalogoController@edit');
+Route::post('Actualizar-catalogo','App\Http\Controllers\CatalogoController@update');
+Route::get('Baja-catalogo/{catalogo}','App\Http\Controllers\CatalogoController@destroy');
