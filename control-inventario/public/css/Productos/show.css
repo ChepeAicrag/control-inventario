@@ -1,0 +1,10 @@
+.receta-meta{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.volver{
+    height: 2.5rem;
+}

@@ -21,7 +21,7 @@ class CreateProductosTable extends Migration
             $table->double('precio_c', 8, 2)->nullable();
             $table->integer('stock')->nullable();
             $table->boolean('status_delete');
-            $table->string('imagen');
+            $table->string('imagen')->nullable();
             $table->ForeignId('id_categoria')->references('id')->on('categorias');
             $table->ForeignId('id_catalogo')->references('id')->on('catalogos');
             $table->ForeignId('id_bodega')->references('id')->on('bodegas');
