@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Catalogo extends Model
 {
     use HasFactory;
+
+    protected $table = 'catalogos';
+    protected $primarykey = 'id';
+    public $timestamps = true;
+    protected $fillable = [
+        'nombre','descripcion','status_delete'
+    ];
 }
