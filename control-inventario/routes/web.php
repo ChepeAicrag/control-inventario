@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+
 });
 
 Route::get('Crear-bodega','App\Http\Controllers\BodegaController@create');
@@ -28,3 +29,10 @@ Route::get('Baja-bodega/{bodega}','App\Http\Controllers\BodegaController@destroy
 Route::post('Guardar-bodega','App\Http\Controllers\BodegaController@store');
 
 Route::post('Actualizar-bodega','App\Http\Controllers\BodegaController@update');
+
+Route::get('Categoria-alta','App\Http\Controllers\CategoriaController@create');
+Route::post('Categoria-guardar','App\Http\Controllers\CategoriaController@store');
+Route::get('Categoria-ver','App\Http\Controllers\CategoriaController@show');
+Route::get('Categoria-editar/{id}','App\Http\Controllers\CategoriaController@edit');
+Route::post('Categoria-actualizar','App\Http\Controllers\CategoriaController@update');
+Route::get('Categoria-baja/{id}','App\Http\Controllers\CategoriaController@destroy');
