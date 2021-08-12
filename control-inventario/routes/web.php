@@ -16,3 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('Crear-bodega','App\Http\Controllers\BodegaController@create');
+
+Route::get('Mostrar-bodega','App\Http\Controllers\BodegaController@show');
+
+Route::get('Editar-bodega/{bodega}','App\Http\Controllers\BodegaController@edit');
+
+Route::get('Baja-bodega/{bodega}','App\Http\Controllers\BodegaController@destroy');
+
+Route::post('Guardar-bodega','App\Http\Controllers\BodegaController@store');
+
+Route::post('Actualizar-bodega','App\Http\Controllers\BodegaController@update');
