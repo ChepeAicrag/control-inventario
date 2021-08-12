@@ -25,6 +25,7 @@ class BodegaController extends Controller
     public function create()
     {
         //
+        return view('Bodega/crear');
     }
 
     /**
@@ -36,6 +37,15 @@ class BodegaController extends Controller
     public function store(Request $request)
     {
         //
+        $nombre = $request->nombre;
+        $descripcion = $request->descripcion;
+        $direccion = $request->direccion;
+
+        Bodega::create([
+            'nombre' => $nombre, 'descripcion' => $descripcion, 'direccion' => $direccion, 'status_delete' => 0,
+        ]);
+
+        return redirect()->to('Crear-bodega');
     }
 
     /**
@@ -46,7 +56,10 @@ class BodegaController extends Controller
      */
     public function show(Bodega $bodega)
     {
-        //
+        $ver = Bodega::select('id', 'nombre', 'descripcion', 'direccion', 'created_at')
+            ->where('status_delete', 0)
+            ->get();
+        return view('Bodega/mostrar', compact('ver'));
     }
 
     /**
@@ -58,6 +71,7 @@ class BodegaController extends Controller
     public function edit(Bodega $bodega)
     {
         //
+        return view('Bodega/editar', compact('bodega'));
     }
 
     /**
@@ -69,7 +83,18 @@ class BodegaController extends Controller
      */
     public function update(Request $request, Bodega $bodega)
     {
-        //
+        $nombre = $request->nombre;
+        $descripcion = $request->descripcion;
+        $direccion = $request->direccion;
+        $id = $request->id;
+
+        Bodega::select('id', 'nombre', 'descripcion', 'direccion')
+            ->where('id', $id)
+            ->update([
+                'nombre' => $nombre, 'descripcion' => $descripcion, 'direccion' => $direccion
+            ]);
+
+        return redirect()->to('Mostrar-bodega');
     }
 
     /**
@@ -78,8 +103,13 @@ class BodegaController extends Controller
      * @param  \App\Models\Bodega  $bodega
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Bodega $bodega)
+    public function destroy($bodega)
     {
-        //
+        Bodega::select('id', 'nombre', 'descripcion')
+            ->where('id', $bodega)
+            ->update([
+                'status_delete' => 1
+            ]);
+        return redirect()->to('Mostrar-bodega');
     }
 }
