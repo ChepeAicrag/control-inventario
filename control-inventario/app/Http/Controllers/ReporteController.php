@@ -14,7 +14,7 @@ class ReporteController extends Controller
      */
     public function index()
     {
-        //
+        return view('Reporte/indice');
     }
 
     /**
@@ -24,7 +24,7 @@ class ReporteController extends Controller
      */
     public function create()
     {
-        //
+        return view('Reporte/crear');
     }
 
     /**
@@ -35,7 +35,18 @@ class ReporteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $accion = $request->accion;
+        $cantidad = $request->cantidad;
+        $status_Delete = 1;
+        $id_usuario = $request->id_usuario;
+        $id_auth = $request->id_auth;
+        $id_producto = $request->id_producto;
+
+        Reporte::create([
+            'accion' => $accion, 'cantidad' => $cantidad, 'status_delete' => $status_Delete, 'id_usuario'=>$id_usuario, 'id_auth'=>$id_auth,'id_producto'=>$id_producto
+        ]);
+
+        return redirect()->to('Crear-Reporte');
     }
 
     /**
@@ -46,7 +57,10 @@ class ReporteController extends Controller
      */
     public function show(Reporte $reporte)
     {
-        //
+        $ver = Reporte::select('id','accion','cantidad','id_usuario','id_auth','id_producto')
+        ->where('status_delete',1)
+        ->get();
+        return view('Reporte/mostrar',compact('ver'));
     }
 
     /**
@@ -57,7 +71,7 @@ class ReporteController extends Controller
      */
     public function edit(Reporte $reporte)
     {
-        //
+        return view('Reporte/editar',compact('reporte'));
     }
 
     /**
@@ -69,7 +83,21 @@ class ReporteController extends Controller
      */
     public function update(Request $request, Reporte $reporte)
     {
-        //
+        $id = $request->id;
+        $accion = $request->accion;
+        $cantidad = $request->cantidad;
+        $id_usuario = $request->id_usuario;
+        $id_auth = $request->id_auth;
+        $id_producto = $request->id_producto;
+
+        Reporte::select('id','nombre','descripcion')
+        ->where('id',$id)
+        ->update([
+            'accion' => $accion, 'cantidad' => $cantidad, 'id_usuario'=>$id_usuario, 'id_auth'=>$id_auth,'id_producto'=>$id_producto
+        
+        ]);
+
+        return redirect()->to('Mostrar-Reporte');
     }
 
     /**
@@ -78,8 +106,13 @@ class ReporteController extends Controller
      * @param  \App\Models\Reporte  $reporte
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reporte $reporte)
+    public function destroy($reporte)
     {
-        //
+        Reporte::select('id','nombre','descripcion')
+        ->where('id',$reporte)
+        ->update([
+            'status_delete' => 0
+        ]);
+        return redirect()->to('Mostrar-Reporte');
     }
 }

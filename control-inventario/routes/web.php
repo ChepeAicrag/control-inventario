@@ -35,6 +35,8 @@ Route::post('Categoria-actualizar','App\Http\Controllers\CategoriaController@upd
 Route::get('Categoria-baja/{id}','App\Http\Controllers\CategoriaController@destroy');
 
 /* RUTAS DE CATALOGOS */
+
+Route::get('Catalogo','App\Http\Controllers\CatalogoController@index');
 Route::get('Crear-catalogo','App\Http\Controllers\CatalogoController@create');
 Route::post('Guardar-catalogo','App\Http\Controllers\CatalogoController@store');
 Route::get('Mostrar-catalogo','App\Http\Controllers\CatalogoController@show');
@@ -50,3 +52,12 @@ Route::get('productos/{producto}/edit', 'App\Http\Controllers\ProductoController
 Route::post('productos/producto/{producto}', 'App\Http\Controllers\ProductoController@update')->name('productos.update');
 Route::get('productos/delete/{producto}','App\Http\Controllers\ProductoController@destroy')->name('productos.destroy');
 Route::get('productos/{producto}','App\Http\Controllers\ProductoController@show')->name('productos.show');
+
+/* RUTAS DE REPORTES */
+Route::get('Reporte','App\Http\Controllers\ReporteController@index');
+Route::get('Crear-Reporte','App\Http\Controllers\ReporteController@create');
+Route::post('Guardar-Reporte','App\Http\Controllers\ReporteController@store');
+Route::get('Mostrar-Reporte','App\Http\Controllers\ReporteController@show');
+Route::get('Editar-Reporte/{reporte}','App\Http\Controllers\ReporteController@edit');
+Route::post('Actualizar-Reporte','App\Http\Controllers\ReporteController@update');
+Route::get('Baja-Reporte/{reporte}','App\Http\Controllers\ReporteController@destroy');

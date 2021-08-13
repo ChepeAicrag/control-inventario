@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Reporte extends Model
 {
     use HasFactory;
+
+    protected $table = 'reportes';
+    protected $primarykey = 'id';
+    public $timestamps = true;
+    protected $fillable = [
+        'accion','cantidad','status_delete','id_usuario','id_auth','id_producto'
+    ];
 }
