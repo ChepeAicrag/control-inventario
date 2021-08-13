@@ -14,7 +14,9 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $productos=Producto::paginate(3);
+        
+        $productos=Producto::select('*')
+        ->where('status_delete',0)->paginate(3);
         return view('productos/index')->with('productos',$productos);
     }
 
@@ -119,9 +121,13 @@ class ProductoController extends Controller
      * @param  \App\Models\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Producto $producto)
+    public function destroy( $producto)
     {
-        $producto->delete();
+        Producto::select('*')
+        ->where('id',$producto)
+        ->update([
+            'status_delete' => 1
+        ]);
         return redirect()->to('/productos/index');
     }
 }

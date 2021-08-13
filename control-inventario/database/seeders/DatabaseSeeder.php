@@ -13,6 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // User::factory(10)->create();
+        $this->call(bodegaSeeder::class);
+        $this->call(catalogoSeeder::class);
+        $this->call(categoriaSeeder::class);
+        $this->call(productoSeeder::class);
     }
 }

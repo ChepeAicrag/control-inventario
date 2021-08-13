@@ -38,7 +38,7 @@ class CategoriaController extends Controller
     {
         $nombre= $request->nombre;
         $descripcion=$request->descripcion;
-        $status_delete= 1;
+        $status_delete= false;
 
         Categoria:: create([
             'nombre' => $nombre, 
@@ -57,7 +57,7 @@ class CategoriaController extends Controller
     public function show(Categoria $categoria)
     {
         $verCategoria=Categoria::select('id','nombre','descripcion','created_at')
-        -> where('status_delete',1)
+        -> where('status_delete',0)
         ->get();
         return view ('Categoria/CategoriaVer')->with('categoria',$verCategoria);
     }
@@ -109,7 +109,7 @@ class CategoriaController extends Controller
         Categoria::select('id','nombre','descripcion')
         ->where('id',$categoria)
         ->update([
-            'status_delete' => 0
+            'status_delete' => 1
         ]);
         return redirect()->to('Categoria-ver');
     }
