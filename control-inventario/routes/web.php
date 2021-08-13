@@ -18,6 +18,7 @@ Route::get('/', function () {
 
 });
 
+/* RUTAS DE BODEGEAS */
 Route::get('Crear-bodega','App\Http\Controllers\BodegaController@create');
 Route::get('Mostrar-bodega','App\Http\Controllers\BodegaController@show');
 Route::get('Editar-bodega/{bodega}','App\Http\Controllers\BodegaController@edit');
@@ -25,6 +26,7 @@ Route::get('Baja-bodega/{bodega}','App\Http\Controllers\BodegaController@destroy
 Route::post('Guardar-bodega','App\Http\Controllers\BodegaController@store');
 Route::post('Actualizar-bodega','App\Http\Controllers\BodegaController@update');
 
+/* RUTAS DE CATEGORIAS */
 Route::get('Categoria-alta','App\Http\Controllers\CategoriaController@create');
 Route::post('Categoria-guardar','App\Http\Controllers\CategoriaController@store');
 Route::get('Categoria-ver','App\Http\Controllers\CategoriaController@show');
@@ -32,9 +34,19 @@ Route::get('Categoria-editar/{id}','App\Http\Controllers\CategoriaController@edi
 Route::post('Categoria-actualizar','App\Http\Controllers\CategoriaController@update');
 Route::get('Categoria-baja/{id}','App\Http\Controllers\CategoriaController@destroy');
 
+/* RUTAS DE CATALOGOS */
 Route::get('Crear-catalogo','App\Http\Controllers\CatalogoController@create');
 Route::post('Guardar-catalogo','App\Http\Controllers\CatalogoController@store');
 Route::get('Mostrar-catalogo','App\Http\Controllers\CatalogoController@show');
 Route::get('Editar-catalogo/{catalogo}','App\Http\Controllers\CatalogoController@edit');
 Route::post('Actualizar-catalogo','App\Http\Controllers\CatalogoController@update');
 Route::get('Baja-catalogo/{catalogo}','App\Http\Controllers\CatalogoController@destroy');
+
+/* RUTAS DE PRODUCTOS */
+Route::post('productos/crear', 'App\Http\Controllers\ProductoController@store');
+Route::get('productos', 'App\Http\Controllers\ProductoController@create')->name('productos.crear');
+Route::get('productos/index', 'App\Http\Controllers\ProductoController@index')->name('productos.index');
+Route::get('productos/{producto}/edit', 'App\Http\Controllers\ProductoController@edit')->name('productos.edit');
+Route::post('productos/producto/{producto}', 'App\Http\Controllers\ProductoController@update')->name('productos.update');
+Route::get('productos/delete/{producto}','App\Http\Controllers\ProductoController@destroy')->name('productos.destroy');
+Route::get('productos/{producto}','App\Http\Controllers\ProductoController@show')->name('productos.show');
