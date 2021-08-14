@@ -56,10 +56,9 @@ class CategoriaController extends Controller
      */
     public function show(Categoria $categoria)
     {
-        $verCategoria=Categoria::select('id','nombre','descripcion','created_at')
-        -> where('status_delete',0)
-        ->get();
-        return view ('Categoria/CategoriaVer')->with('categoria',$verCategoria);
+        $ver=Categoria::select('id','nombre','descripcion','created_at')
+        ->where('status_delete',0)->paginate(3);
+        return view('Categoria/CategoriaVer',compact('ver'));
     }
 
     /**

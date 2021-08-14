@@ -17,6 +17,7 @@
    <a href="{{ url('/inicio') }}" class=" mt-3 volver btn btn-dark"> Volver</a>
    <a href="{{ url('/Crear-catalogo') }}" class=" mt-3 volver btn btn-secondary"> Agregar Catálogo +</a>
 @endsection
+
 @section('content')
 
 
