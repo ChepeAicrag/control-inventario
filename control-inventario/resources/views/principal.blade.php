@@ -56,7 +56,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Categorias</h5>
                   <p class="card-text">Elegir esta opción si desea ver, agregar o eliminar una categoria.</p>
-                  <a href="{{route('categoria.show')}}" class="btn btn-primary"> Ir a Categorias</a>
+                  <a href="{{route('categoria.index')}}" class="btn btn-primary"> Ir a Categorias</a>
                 </div>
             </div>
         </div>
