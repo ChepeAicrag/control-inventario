@@ -14,7 +14,9 @@ class BodegaController extends Controller
      */
     public function index()
     {
-        //
+        $ver = Bodega::select('id', 'nombre', 'descripcion', 'direccion', 'created_at')
+        ->where('status_delete', 0)->paginate(3);
+        return view('Bodega/mostrar', compact('ver'));
     }
 
     /**
@@ -56,9 +58,7 @@ class BodegaController extends Controller
      */
     public function show(Bodega $bodega)
     {
-        $ver = Bodega::select('id', 'nombre', 'descripcion', 'direccion', 'created_at')
-            ->where('status_delete', 0)->paginate(3);
-        return view('Bodega/mostrar', compact('ver'));
+        return view('bodega.show',compact('bodega',$bodega));
     }
 
     /**

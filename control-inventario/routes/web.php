@@ -24,11 +24,12 @@ Route::get('/inicio', function () {
 
 /* RUTAS DE BODEGEAS */
 Route::get('Crear-bodega','App\Http\Controllers\BodegaController@create');
-Route::get('Mostrar-bodega','App\Http\Controllers\BodegaController@show')->name('bodega.show');
+Route::get('Bodega/{bodega}','App\Http\Controllers\BodegaController@show')->name('bodega.show');
 Route::get('Editar-bodega/{bodega}','App\Http\Controllers\BodegaController@edit');
 Route::get('Baja-bodega/{bodega}','App\Http\Controllers\BodegaController@destroy');
 Route::post('Guardar-bodega','App\Http\Controllers\BodegaController@store');
 Route::post('Actualizar-bodega','App\Http\Controllers\BodegaController@update');
+Route::get('Mostrar-bodega','App\Http\Controllers\BodegaController@index')->name('bodega.index');
 
 /* RUTAS DE CATEGORIAS */
 Route::get('Categoria-alta','App\Http\Controllers\CategoriaController@create');

@@ -35,7 +35,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Bodegas</h5>
                   <p class="card-text">Elegir esta opción si desea ver, agregar o eliminar una bodega.</p>
-                  <a href="{{route('bodega.show')}}" class="btn btn-primary"> Ir a Bodegas</a>
+                  <a href="{{route('bodega.index')}}" class="btn btn-primary"> Ir a Bodegas</a>
                 </div>
             </div>
 
@@ -55,8 +55,8 @@
                 <img src="imagenes/categoria.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">Categorias</h5>
-                  <p class="card-text">Elegir esta opción si desea ver, agregar o eliminar una bodega.</p>
-                  <a href="{{route('bodega.show')}}" class="btn btn-primary"> Ir a Bodegas</a>
+                  <p class="card-text">Elegir esta opción si desea ver, agregar o eliminar una categoria.</p>
+                  <a href="{{route('categoria.show')}}" class="btn btn-primary"> Ir a Categorias</a>
                 </div>
             </div>
         </div>

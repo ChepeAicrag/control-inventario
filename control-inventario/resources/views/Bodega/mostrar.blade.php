@@ -35,17 +35,17 @@
             </thead>
 
             <tbody >
-                @foreach ($ver as $bodega)
+                @foreach ($ver as $x)
                     <tr> 
-                        <td>{{$bodega->id}}</td>
-                        <td>{{$bodega->nombre}}</td>
-                        <td>{!!$bodega->descripcion!!}</td>
-                        <td>{{$bodega->direccion}}</td>
-                        <td>{{$bodega->created_at}}</td>
+                        <td>{{$x->id}}</td>
+                        <td>{{$x->nombre}}</td>
+                        <td>{!!$x->descripcion!!}</td>
+                        <td>{{$x->direccion}}</td>
+                        <td>{{$x->created_at}}</td>
                         <td>
-                            <a href="../Editar-bodega/{{$bodega->id}}" class="btn btn-dark mr-1 mb-2 d-block w-100">Editar</a>
-                            <a href="" class="btn btn-success mr-1 mb-2 d-block w-100">Ver</a>
-                            <a href="../Baja-bodega/{{$bodega->id}}" class="btn btn-danger mr-1 mb-2 d-block w-100">Eliminar</a>
+                            <a href="../Editar-bodega/{{$x->id}}" class="btn btn-dark mr-1 mb-2 d-block w-100">Editar</a>
+                            <a href="../Bodega/{{$x->id}}" class="btn btn-success mr-1 mb-2 d-block w-100">Ver</a>
+                            <a href="../Baja-bodega/{{$x->id}}" class="btn btn-danger mr-1 mb-2 d-block w-100">Eliminar</a>
                         </td>
                       
                         
