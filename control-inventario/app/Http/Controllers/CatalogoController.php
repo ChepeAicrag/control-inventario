@@ -44,7 +44,7 @@ class CatalogoController extends Controller
             'nombre' => $nombre, 'descripcion' => $descripcion, 'status_delete' => $status_Delete
         ]);
 
-        return redirect()->to('Crear-catalogo');
+        return redirect()->to('Mostrar-catalogo');
     }
 
     /**
@@ -57,8 +57,7 @@ class CatalogoController extends Controller
     {
         //$ver = Catalogo::all();
         $ver = Catalogo::select('id','nombre','descripcion','created_at')
-        ->where('status_delete',0)
-        ->get();
+        ->where('status_delete',0)->paginate(3);
         return view('Catalogo/mostrar',compact('ver'));
     }
 

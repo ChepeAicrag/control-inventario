@@ -5,15 +5,16 @@
 @endsection
 
 @section('botones')
-   <a href="{{ url('/inicio') }}" class=" volver btn btn-primary"> Volver</a>
-   <a href="{{ url('/productos') }}" class=" volver btn btn-secondary"> Agregar Producto +</a>
+   <a href="{{ url('/inicio') }}" class=" mt-5 volver btn btn-dark"> Volver</a>
+   <a href="{{ url('/productos') }}" class=" mt-5 volver btn btn-secondary"> Agregar Producto +</a>
 @endsection
 @section('content')
 
-<h2 class="text-center  mt-3 mb-3">Productos</h2>
-<div class="col-md-10 mx-auto bg-white p-3">
+
+<div class="col-md-10  mx-auto p-3">
+    <h2 class="text-center  mb-3">Productos</h2>
         <table class="table">
-            <thead class="bg-primary text-light">
+            <thead class="bg-dark text-light">
                 <tr>
                     <th scole="col">Nombre</th>
                     <th scole="col">Precio</th>
@@ -41,7 +42,7 @@
 
         </table>
 
-        <div class="">
+        <div class="mb-5">
             @if ($productos->currentPage()>1)
                 <a href=" {{$productos->previousPageUrl()}}" class="btn btn-dark" >atras</a>
             @endif
