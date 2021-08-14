@@ -5,14 +5,14 @@
 @endsection
 
 @section('botones')
-   <a href="{{ url('/productos/index') }}" class=" volver btn btn-primary"> Volver</a>
+   <a href="{{ url('/productos/index') }}" class=" volver btn btn-dark"> Volver</a>
 @endsection
 @section('content')
 
-    <h2 class="text-center mb-5">Editar Producto</h2>
+    <h2 class="text-center mb-3 mt-4">Editar Producto</h2>
     {{-- <div id="example"></div> --}}
-    <div class="row justify-content-center mt-5">
-        <div class="col-md-9">
+    <div class="contenedor-form mb-5 ">
+        <div class="formulario mb-5">
             <form id="formulario" method="POST" action="{{route('productos.update',['producto'=>$producto->id])}}" enctype="multipart/form-data" novalidate>
                 @csrf
                 <div class="form-group">
@@ -135,12 +135,8 @@
                         </span>
                     @enderror
                 </div>
-
-
-
                 <div class="form-group mt-3">
-                    
-                    <input type="submit"  class="btn btn-primary" value="Editar Producto" >
+                    <input type="submit"  class="btn btn-dark" value="Editar Producto" >
                 </div>
 
 

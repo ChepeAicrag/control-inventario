@@ -45,7 +45,7 @@ class BodegaController extends Controller
             'nombre' => $nombre, 'descripcion' => $descripcion, 'direccion' => $direccion, 'status_delete' => 0,
         ]);
 
-        return redirect()->to('Crear-bodega');
+        return redirect()->to('Mostrar-bodega');
     }
 
     /**
@@ -57,8 +57,7 @@ class BodegaController extends Controller
     public function show(Bodega $bodega)
     {
         $ver = Bodega::select('id', 'nombre', 'descripcion', 'direccion', 'created_at')
-            ->where('status_delete', 0)
-            ->get();
+            ->where('status_delete', 0)->paginate(3);
         return view('Bodega/mostrar', compact('ver'));
     }
 

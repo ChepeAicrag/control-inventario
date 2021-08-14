@@ -5,50 +5,60 @@
 @endsection
 
 @section('botones')
-   <a href="{{ url('/productos/index') }}" class=" volver btn btn-primary"> Volver</a>
+   <a href="{{ url('/productos/index') }}" class=" mt-3 volver btn btn-dark"> Volver</a>
 @endsection
 @section('content')
 
 <article class="contenido-receta">
-    <h1 class="text-center mb-10">{{$producto->nombre}}</h1>
+    <h1 class="titulo mt-5 mb-10">{{$producto->nombre}}</h1>
 </article>
 <div class="imagen-receta">
     <img src="/storage/{{$producto->imagen}}" class="w-100" alt="">
 </div>
-<div class="receta-meta mt-2">
-       <p>
-           <span class="font-weight-bold text-primary">Categoria:</span>
-           {{$producto->id_categoria}}
-       </p>
+<div class=" contenedor-vista mb-5">
 
-       <p>
-        <span class="font-weight-bold text-primary">Catalogo:</span>
-        {{$producto->id_catalogo}}
-      </p>
+    <div class="caracteristicas">
+        <div class="fila">
+            <div class="preparacion">
+                <h3 class="my-3">Categoria: </h3>
+                {{$producto->id_categoria}}
+            </div>
+        
+              <div class="preparacion">
+                <h3 class="my-3 ">Catalogo:</h3>
+                {{$producto->id_catalogo}}
+              </div>
+        
+        </div>
 
-      <p>
-        <span class="font-weight-bold text-primary">Bodega:</span>
-        {{$producto->id_bodega}}
-      </p>
+        <div class="fila">
+            <div class="mt-3 preparacion">
+                <h3 class="my-3 ">Precio de Venta: </h3>
+                {!!$producto->precio_v!!}
+            </div>
+    
+            <div class="preparacion">
+                <h3 class="my-3 ">Precio Compra: </h3>
+                {!!$producto->precio_c!!}
+            </div>
+        </div>
 
-            
-       <div class="preparacion">
-            <h2 class="my-3 text-primary">Descripcion</h2>
+        <div class="fila">
+            <div class="preparacion">
+                <h3 class="my-3 ">Bodega: </h3>
+                {{$producto->id_bodega}}
+              </div>
+
+        </div>
+        </div>
+
+        
+    
+       <div class="descripcion">
+            <h3 class="my-3">Descripción: </h3>
             {!!$producto->descripcion!!}
         </div>
-
-        <div class="preparacion">
-            <h2 class="my-3 text-primary">Precio Venta</h2>
-            {!!$producto->precio_v!!}
-        </div>
-
-        <div class="preparacion">
-            <h2 class="my-3 text-primary">Precio Compra</h2>
-            {!!$producto->precio_c!!}
-        </div>
-        
-        
-        
+  
 </div>
     
 @endsection

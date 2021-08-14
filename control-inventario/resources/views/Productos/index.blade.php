@@ -8,6 +8,8 @@
    <a href="{{ url('/inicio') }}" class=" mt-5 volver btn btn-dark"> Volver</a>
    <a href="{{ url('/productos') }}" class=" mt-5 volver btn btn-secondary"> Agregar Producto +</a>
 @endsection
+
+
 @section('content')
 
 

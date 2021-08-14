@@ -27,9 +27,6 @@
                   <a href="{{route('catalogo.show')}}" class="btn btn-primary"> Ir a cátalogos</a>
                 </div>
             </div>
-    
-            
-    
         </div>
         
         <div class="opciones  mt-5">
