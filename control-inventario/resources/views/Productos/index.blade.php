@@ -32,7 +32,7 @@
                             <a href="{{action('App\Http\Controllers\ProductoController@show',['producto'=>$producto->id])}}" class="btn btn-success mr-1 mb-2 d-block w-100">Ver</a>
                             <a  href="/productos/delete/{{$producto->id}}" class="btn btn-danger mr-1 mb-2 d-block w-100">Eliminar</a>
                         </td>
-                      
+                        <td><a href="../Stock/{{$producto->id}}">Accion</a></td>
                         
                     </tr>
                 @endforeach

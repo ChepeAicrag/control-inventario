@@ -4,26 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Editar Reporte</title>
+    <title>Document</title>
 </head>
 <body>
-    <h3> Editar Reporte </h3>
+    <h3> Sumar y Restar stock </h3>
 
-    <form action="{{url('Actualizar-Reporte')}}" method="post">
+    <form action="{{url('StockP')}}" method="post">
         
         @csrf
 
-        <input type="hidden" name="id" value="{{$reporte->id}}">
+        <input type="hidden" name="id" value="{{$producto->id}}">
 
         accion: <input type="text" name="accion">
         cantidad: <input type="number" name="cantidad">
-        cantidad_ant: <input type="number" name="cantidad_ant">
-        cantidad_act: <input type="number" name="cantidad_act">
         id_usuario: <input type="number" name="id_usuario">
         id_auth: <input type="number" name="id_auth">
-        id_producto: <input type="number" name="id_producto">
 
-        <input type="submit" name="boton" value="Actualizar">
+        <input type="submit" name="boton" value="Hecho">
 
     </form>
 </body>

@@ -63,5 +63,8 @@ Route::post('Actualizar-Reporte','App\Http\Controllers\ReporteController@update'
 Route::get('Baja-Reporte/{reporte}','App\Http\Controllers\ReporteController@destroy');
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+/*RUTAS DEL STOCK*/
+Route::get('Stock/{producto}','App\Http\Controllers\ReporteController@stock');
+Route::post('StockP','App\Http\Controllers\ReporteController@stockP');

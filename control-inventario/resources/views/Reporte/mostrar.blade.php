@@ -14,6 +14,8 @@
             <td>id</td>
             <td>accion</td>
             <td>cantidad</td>
+            <td>cantidad_ant</td>
+            <td>cantidad_act</td>
             <td>id usuario</td>
             <td>id autorizacion</td>
             <td>id producto</td>
@@ -23,6 +25,8 @@
                 <td>{{$x->id}}</td>
                 <td>{{$x->accion}}</td>
                 <td>{{$x->cantidad}}</td>
+                <td>{{$x->cantidad_ant}}</td>
+                <td>{{$x->cantidad_act}}</td>
                 <td>{{$x->id_usuario}}</td>
                 <td>{{$x->id_auth}}</td>
                 <td>{{$x->id_producto}}</td>

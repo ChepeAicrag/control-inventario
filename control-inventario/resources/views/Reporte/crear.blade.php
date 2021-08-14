@@ -15,6 +15,8 @@
 
         accion: <input type="text" name="accion">
         cantidad: <input type="number" name="cantidad">
+        cantidad_ant: <input type="number" name="cantidad_ant">
+        cantidad_act: <input type="number" name="cantidad_act">
         id_usuario: <input type="number" name="id_usuario">
         id_auth: <input type="number" name="id_auth">
         id_producto: <input type="number" name="id_producto">

@@ -17,6 +17,8 @@ class CreateReportesTable extends Migration
             $table->id();
             $table->string('accion');
             $table->integer('cantidad');
+            $table->integer('cantidad_ant');
+            $table->integer('cantidad_act');
             $table->boolean('status_delete');
             $table->ForeignId('id_usuario')->references('id')->on('usuarios');
             $table->ForeignId('id_auth')->references('id')->on('usuarios');
