@@ -7,6 +7,7 @@
 @section('botones')
    <a href="{{ url('/Mostrar-catalogo') }}" class=" volver btn btn-dark"> Volver</a>
 @endsection
+
 @section('content')
     <div class="contenedor-form">
        
