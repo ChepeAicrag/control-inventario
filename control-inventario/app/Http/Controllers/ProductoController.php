@@ -17,7 +17,6 @@ class ProductoController extends Controller
      */
     public function index()
     {
-
         $productos=Producto::select('*')
         ->where('status_delete',0)->paginate(3);
         return view('productos/index')->with('productos',$productos);
