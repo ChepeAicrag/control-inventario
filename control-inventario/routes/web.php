@@ -41,10 +41,10 @@ Route::get('Categoria/{categoria}','App\Http\Controllers\CategoriaController@sho
 
 /* RUTAS DE CATALOGOS */
 
-Route::get('Catalogo','App\Http\Controllers\CatalogoController@index');
+Route::get('Catalogo','App\Http\Controllers\CatalogoController@index')->name('catalogo.index');
 Route::get('Crear-catalogo','App\Http\Controllers\CatalogoController@create');
 Route::post('Guardar-catalogo','App\Http\Controllers\CatalogoController@store');
-Route::get('Mostrar-catalogo','App\Http\Controllers\CatalogoController@show')->name('catalogo.show');
+Route::get('Mostrar-catalogo/{catalogo}','App\Http\Controllers\CatalogoController@show')->name('catalogo.show');
 Route::get('Editar-catalogo/{catalogo}','App\Http\Controllers\CatalogoController@edit');
 Route::post('Actualizar-catalogo','App\Http\Controllers\CatalogoController@update');
 Route::get('Baja-catalogo/{catalogo}','App\Http\Controllers\CatalogoController@destroy');

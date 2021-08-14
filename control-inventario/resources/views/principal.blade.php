@@ -24,7 +24,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Catálogos</h5>
                   <p class="card-text">Elegir esta opcion si desea  ver, agregar o eliminar un catalogo.</p>
-                  <a href="{{route('catalogo.show')}}" class="btn btn-primary"> Ir a cátalogos</a>
+                  <a href="{{route('catalogo.index')}}" class="btn btn-primary"> Ir a cátalogos</a>
                 </div>
             </div>
     

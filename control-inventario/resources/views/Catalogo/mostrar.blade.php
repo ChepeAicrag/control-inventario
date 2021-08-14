@@ -43,7 +43,7 @@
                         <td>{{$x->created_at}}</td>
                         <td>
                             <a href="../Editar-catalogo/{{$x->id}}" class="btn btn-dark mr-1 mb-2 d-block w-100">Editar</a>
-                            <a href="" class="btn btn-success mr-1 mb-2 d-block w-100">Ver</a>
+                            <a href="../Mostrar-catalogo/{{$x->id}}" class="btn btn-success mr-1 mb-2 d-block w-100">Ver</a>
                             <a  href="../Baja-catalogo/{{$x->id}}" class="btn btn-danger mr-1 mb-2 d-block w-100">Eliminar</a>
                         </td>
                       

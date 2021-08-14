@@ -7,12 +7,12 @@
 @endsection
 
 @section('botones')
-    <a href="{{ url('Categoria-ver') }}" class=" volver btn btn-primary"> Volver</a>
+    <a href="{{ url('Catalogo') }}" class=" volver btn btn-primary"> Volver</a>
 @endsection
 @section('content')
 
     <article class="contenido-receta">
-        <h1 class="titulo mt-5 mb-10">{{ $categoria->nombre }}</h1>
+        <h1 class="titulo mt-5 mb-10">{{ $catalogo->nombre }}</h1>
     </article>
 
     <div class=" contenedor-vista mb-5">
@@ -21,7 +21,7 @@
             <div class="fila">
                 <div class="preparacion">
                     <h3 class="my-3 ">Descripcion:</h3>
-                    {{ $categoria->descripcion }}
+                    {{ $catalogo->descripcion }}
                 </div>
             </div>
 
