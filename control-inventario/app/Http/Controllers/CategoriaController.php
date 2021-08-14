@@ -15,7 +15,9 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
+        $ver=Categoria::select('id','nombre','descripcion','created_at')
+        ->where('status_delete',0)->paginate(3);
+        return view('Categoria/CategoriaVer',compact('ver'));
     }
 
     /**
@@ -56,9 +58,7 @@ class CategoriaController extends Controller
      */
     public function show(Categoria $categoria)
     {
-        $ver=Categoria::select('id','nombre','descripcion','created_at')
-        ->where('status_delete',0)->paginate(3);
-        return view('Categoria/CategoriaVer',compact('ver'));
+        return view('categoria.show',compact('categoria',$categoria));
     }
 
     /**

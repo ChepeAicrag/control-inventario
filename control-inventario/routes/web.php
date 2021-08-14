@@ -33,10 +33,11 @@ Route::post('Actualizar-bodega','App\Http\Controllers\BodegaController@update');
 /* RUTAS DE CATEGORIAS */
 Route::get('Categoria-alta','App\Http\Controllers\CategoriaController@create');
 Route::post('Categoria-guardar','App\Http\Controllers\CategoriaController@store');
-Route::get('Categoria-ver','App\Http\Controllers\CategoriaController@show')->name('categoria.show');
+Route::get('Categoria-ver','App\Http\Controllers\CategoriaController@index')->name('categoria.index');
 Route::get('Categoria-editar/{id}','App\Http\Controllers\CategoriaController@edit');
 Route::post('Categoria-actualizar','App\Http\Controllers\CategoriaController@update')->name('categoria.update');
 Route::get('Categoria-baja/{id}','App\Http\Controllers\CategoriaController@destroy');
+Route::get('Categoria/{categoria}','App\Http\Controllers\CategoriaController@show')->name('categoria.show');
 
 /* RUTAS DE CATALOGOS */
 
