@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use App\Models\Categoria;
+use App\Models\Catalogo;
+use App\Models\Bodega;
 
 class ProductoController extends Controller
 {
@@ -14,7 +17,9 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $productos=Producto::paginate(3);
+
+        $productos=Producto::select('*')
+        ->where('status_delete',0)->paginate(3);
         return view('productos/index')->with('productos',$productos);
     }
 
@@ -25,7 +30,21 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        return view('Productos/crear');
+        $categorias = Categoria::select('id','nombre', 'descripcion')
+        -> where('status_delete', 0)
+        ->get();
+        $catalogos = Catalogo::select('id','nombre')
+        -> where('status_delete', 0)
+        ->get();
+        $bodegas = Bodega::select('id','nombre')
+        -> where('status_delete', 0)
+        ->get();
+
+        return view('Productos/crear', compact(
+            'categorias', $categorias,
+            'catalogos', $catalogos,
+            'bodegas', $bodegas,
+        ));
     }
 
     /**
@@ -47,7 +66,7 @@ class ProductoController extends Controller
         $id_catalogo=$request->id_catalogo;
         $id_bodega=$request->id_bodega;
 
-    
+
         Producto::create([
             'nombre'=>$nombre,
             'descripcion'=>$descripcion,
@@ -107,7 +126,7 @@ class ProductoController extends Controller
         $producto->id_bodega=$request->id_bodega;
 
         //si el usuario sube una nueva imagen
-       
+
         $producto->save();
         //redireccionar
         return redirect()->to('/productos/index');
@@ -119,9 +138,13 @@ class ProductoController extends Controller
      * @param  \App\Models\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Producto $producto)
+    public function destroy( $producto)
     {
-        $producto->delete();
+        Producto::select('*')
+        ->where('id',$producto)
+        ->update([
+            'status_delete' => 1
+        ]);
         return redirect()->to('/productos/index');
     }
 }
