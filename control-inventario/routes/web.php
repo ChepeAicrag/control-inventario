@@ -18,28 +18,34 @@ Route::get('/', function () {
 
 });
 
+Route::get('/inicio', function () {
+    return view('principal');
+});
+
 /* RUTAS DE BODEGEAS */
 Route::get('Crear-bodega','App\Http\Controllers\BodegaController@create');
-Route::get('Mostrar-bodega','App\Http\Controllers\BodegaController@show');
+Route::get('Bodega/{bodega}','App\Http\Controllers\BodegaController@show')->name('bodega.show');
 Route::get('Editar-bodega/{bodega}','App\Http\Controllers\BodegaController@edit');
 Route::get('Baja-bodega/{bodega}','App\Http\Controllers\BodegaController@destroy');
 Route::post('Guardar-bodega','App\Http\Controllers\BodegaController@store');
 Route::post('Actualizar-bodega','App\Http\Controllers\BodegaController@update');
+Route::get('Mostrar-bodega','App\Http\Controllers\BodegaController@index')->name('bodega.index');
 
 /* RUTAS DE CATEGORIAS */
 Route::get('Categoria-alta','App\Http\Controllers\CategoriaController@create');
 Route::post('Categoria-guardar','App\Http\Controllers\CategoriaController@store');
-Route::get('Categoria-ver','App\Http\Controllers\CategoriaController@show');
+Route::get('Categoria-ver','App\Http\Controllers\CategoriaController@index')->name('categoria.index');
 Route::get('Categoria-editar/{id}','App\Http\Controllers\CategoriaController@edit');
-Route::post('Categoria-actualizar','App\Http\Controllers\CategoriaController@update');
+Route::post('Categoria-actualizar','App\Http\Controllers\CategoriaController@update')->name('categoria.update');
 Route::get('Categoria-baja/{id}','App\Http\Controllers\CategoriaController@destroy');
+Route::get('Categoria/{categoria}','App\Http\Controllers\CategoriaController@show')->name('categoria.show');
 
 /* RUTAS DE CATALOGOS */
 
-Route::get('Catalogo','App\Http\Controllers\CatalogoController@index');
+Route::get('Catalogo','App\Http\Controllers\CatalogoController@index')->name('catalogo.index');
 Route::get('Crear-catalogo','App\Http\Controllers\CatalogoController@create');
 Route::post('Guardar-catalogo','App\Http\Controllers\CatalogoController@store');
-Route::get('Mostrar-catalogo','App\Http\Controllers\CatalogoController@show');
+Route::get('Mostrar-catalogo/{catalogo}','App\Http\Controllers\CatalogoController@show')->name('catalogo.show');
 Route::get('Editar-catalogo/{catalogo}','App\Http\Controllers\CatalogoController@edit');
 Route::post('Actualizar-catalogo','App\Http\Controllers\CatalogoController@update');
 Route::get('Baja-catalogo/{catalogo}','App\Http\Controllers\CatalogoController@destroy');
@@ -57,7 +63,7 @@ Route::get('productos/{producto}','App\Http\Controllers\ProductoController@show'
 Route::get('Reporte','App\Http\Controllers\ReporteController@index');
 Route::get('Crear-Reporte','App\Http\Controllers\ReporteController@create');
 Route::post('Guardar-Reporte','App\Http\Controllers\ReporteController@store');
-Route::get('Mostrar-Reporte','App\Http\Controllers\ReporteController@show');
+Route::get('Mostrar-Reporte','App\Http\Controllers\ReporteController@show')->name('reporte.show');
 Route::get('Editar-Reporte/{reporte}','App\Http\Controllers\ReporteController@edit');
 Route::post('Actualizar-Reporte','App\Http\Controllers\ReporteController@update');
 Route::get('Baja-Reporte/{reporte}','App\Http\Controllers\ReporteController@destroy');

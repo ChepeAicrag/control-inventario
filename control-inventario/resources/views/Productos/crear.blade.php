@@ -5,135 +5,153 @@
 @endsection
 
 @section('botones')
-<a href="{{ url('/productos/index') }}" class=" volver btn btn-primary"> Volver</a>
+   <a href="{{ url('/productos/index') }}" class=" volver btn btn-dark"> Volver</a>
 @endsection
 @section('content')
 
-<h2 class="text-center mb-5">Agregar Producto</h2>
-{{-- <div id="example"></div> --}}
-<div class="row justify-content-center mt-5">
-    <div class="col-md-9">
-        <form id="formulario" class="" method="POST" action="{{url('productos/crear')}}" enctype="multipart/form-data" novalidate>
-            @csrf
-            <div class="form-group">
-                <label for="nombre">Nombre Producto</label>
-                <input type="text" name="nombre" class="form-control @error ('nombre') is-invalid @enderror" id="nombre" placeholder="Nombre Producto..." value={{old('nombre')}}>
-                @error('nombre')
-                <span class="invalid-feedback d-block" role="alert">
-                    <strong>{{$message}}</strong>
-                </span>
-                @enderror
-            </div>
 
-            <div class="form-group mt-3">
-                <label for="id_categoria">Categoria</label>
+    {{-- <div id="example"></div> --}}
+    <div class="  mb-5 contenedor-form row justify-content-center mt-5">
+        <div class=" formulario mb-5">
+            <h2 class="text-center mb-5">Agregar Producto</h2>
+            <form id="formulario" class="" method="POST" action="{{url('productos/crear')}}" enctype="multipart/form-data" novalidate>
+                @csrf
+                <div class="form-group">
+                    <label for="nombre">Nombre Producto</label>
+                    <input type="text" name="nombre" class="form-control @error ('nombre') is-invalid @enderror" id="nombre" placeholder="Nombre Producto..."
+                            value={{old('nombre')}}
+                    >
+                    @error('nombre')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{$message}}</strong>
+                        </span>
+                    @enderror
+                </div>
 
-                <select name="id_categoria" class="form-control form-control-lg @error ('categoria') is-invalid @enderror" id="id_categoria">
-                    <option value="">-- Seleccione --</option>
-                    @foreach ($categorias as $categoria)
-                    <option value={{$categoria->id}}>{{$categoria->nombre}}</option>
-                    @endforeach
+                <div class="form-group mt-3">
+                    <label for="id_categoria">Categoria</label>
 
-                </select>
+                    <select name="id_categoria"
+                            class="form-control form-control-lg @error ('categoria') is-invalid @enderror"
+                            id="id_categoria">
 
-                @error('id_categoria')
-                <span class="invalid-feedback d-block" role="alert">
-                    <strong>{{$message}}</strong>
-                </span>
-                @enderror
-            </div>
-
-            <div class="form-group mt-3">
-                <label for="id_catalogo">Catalogo</label>
-
-                <select name="id_catalogo" class="form-control form-control-lg @error ('categoria') is-invalid @enderror" id="id_catalogo">
-
-                    <option value="">-- Seleccione --</option>
-                    @foreach ($catalogos as $catalogo)
-                    <option value={{$catalogo->id}}>{{$catalogo->nombre}}</option>
-                    @endforeach
-
-                </select>
-
-                @error('id_catalogo')
-                <span class="invalid-feedback d-block" role="alert">
-                    <strong>{{$message}}</strong>
-                </span>
-                @enderror
-            </div>
-
-            <div class="form-group mt-3">
-                <label for="id_bodega">Bodega</label>
-
-                <select name="id_bodega" class="form-control form-control-lg @error ('categoria') is-invalid @enderror" id="id_bodega">
-
-                    <option value="">-- Seleccione --</option>
-                    @foreach ($bodegas as $bodega)
-                    <option value={{$bodega->id}}>{{$bodega->nombre}}</option>
-                    @endforeach
-
-                </select>
-
-                @error('id_bodega')
-                <span class="invalid-feedback d-block" role="alert">
-                    <strong>{{$message}}</strong>
-                </span>
-                @enderror
-            </div>
+                        <option value="">-- Seleccione --</option>
+                        @foreach ($categorias as $categoria)
+                            <option value={{$categoria->id}}>{{$categoria->nombre}}</option>
+                        @endforeach
 
 
-            <div class="form-group mt-3">
-                <label for="descripcion">Descripción</label>
-                <input type="hidden" id="descripcion" name="descripcion" value="{{old('descripcion')}}">
-                <trix-editor input="descripcion" class="form-control form-control-lg @error ('descripcion') is-invalid @enderror"></trix-editor>
-                @error('descripcion')
-                <span class="invalid-feedback d-block" role="alert">
-                    <strong>{{$message}}</strong>
-                </span>
-                @enderror
-            </div>
+                    </select>
 
-            <div class="form-group mt-3">
-                <label for="precio_c">Precio compra</label>
-                <input type="number" name="precio_c" step="1.00">
+                    @error('id_categoria')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{$message}}</strong>
+                        </span>
+                    @enderror
+                </div>
 
-            </div>
+                <div class="form-group mt-3">
+                    <label for="id_catalogo">Catalogo</label>
 
-            <div class="form-group mt-3">
-                <label for="precio_v">Precio venta</label>
-                <input type="number" name="precio_v" step="1.00">
+                    <select name="id_catalogo"
+                            class="form-control form-control-lg @error ('categoria') is-invalid @enderror"
+                            id="id_catalogo">
 
-            </div>
-
-            <div class="form-group mt-3">
-                <label for="stock">Stock</label>
-                <input type="number" name="stock" step="1.00">
-
-            </div>
+                        <option value="">-- Seleccione --</option>
+                        @foreach ($catalogos as $catalogo)
+                            <option value={{$catalogo->id}}>{{$catalogo->nombre}}</option>
+                        @endforeach
 
 
+                    </select>
 
-            <div class="form-group mt-3">
-                <label for="imagen">Imagen</label>
-                <input type="file" class="form-control  @error ('preparacion') is-invalid @enderror" id="imagen" name="imagen" value="{{old('imagen')}}">
+                    @error('id_catalogo')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{$message}}</strong>
+                        </span>
+                    @enderror
+                </div>
 
-                @error('imagen')
-                <span class="invalid-feedback d-block" role="alert">
-                    <strong>{{$message}}</strong>
-                </span>
-                @enderror
-            </div>
+                <div class="form-group mt-3">
+                    <label for="id_bodega">Bodega</label>
+
+                    <select name="id_bodega"
+                            class="form-control form-control-lg @error ('categoria') is-invalid @enderror"
+                            id="id_bodega">
+
+                        <option value="">-- Seleccione --</option>
+                        @foreach ($bodegas as $bodega)
+                            <option value={{$bodega->id}}>{{$bodega->nombre}}</option>
+                        @endforeach
+
+
+                    </select>
+
+                    @error('id_bodega')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{$message}}</strong>
+                        </span>
+                    @enderror
+                </div>
+
+
+                <div class="form-group mt-3">
+                    <label for="descripcion">Descripción</label>
+                    <input type="hidden" id="descripcion" name="descripcion" value="{{old('descripcion')}}">
+                    <trix-editor input="descripcion" class="form-control form-control-lg @error ('descripcion') is-invalid @enderror" ></trix-editor>
+                    @error('descripcion')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{$message}}</strong>
+                        </span>
+                    @enderror
+                </div>
+
+                <div class="form-group mt-3">
+                    <label for="precio_c">Precio compra</label>
+                    <input type="number" name="precio_c" step="1.00">
+
+                </div>
+
+                <div class="form-group mt-3">
+                    <label for="precio_v">Precio venta</label>
+                    <input type="number" name="precio_v" step="1.00">
+
+                </div>
+
+                <div class="form-group mt-3">
+                    <label for="stock">Stock</label>
+                    <input type="number" name="stock" step="1.00">
+
+                </div>
 
 
 
-            <div class="form-group mt-3">
+                <div class="form-group mt-3">
+                    <label for="imagen">Imagen</label>
+                    <input type="file"
+                            class="form-control  @error ('preparacion') is-invalid @enderror"
+                            id="imagen"
+                            name="imagen"
+                            value="{{old('imagen')}}">
 
-                <input type="submit" class="btn btn-primary" value="Agregar Producto">
-            </div>
+                    @error('imagen')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{$message}}</strong>
+                        </span>
+                    @enderror
+                </div>
 
 
-        </form>
 
+                <div class="form-group mt-3">
+
+                    <input type="submit"  class="btn btn-dark" value="Agregar Producto" >
+                </div>
+
+
+            </form>
+
+        </div>
     </div>
 </div>
 

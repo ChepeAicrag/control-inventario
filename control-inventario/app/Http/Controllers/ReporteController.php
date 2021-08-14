@@ -62,7 +62,7 @@ class ReporteController extends Controller
     {
         $ver = Reporte::select('id','accion','cantidad','cantidad_ant','cantidad_act','id_usuario','id_auth','id_producto')
         ->where('status_delete',0)
-        ->get();
+        ->paginate(3);
         return view('Reporte/mostrar',compact('ver'));
     }
 
@@ -99,7 +99,7 @@ class ReporteController extends Controller
         ->where('id',$id)
         ->update([
             'accion' => $accion, 'cantidad' => $cantidad, 'cantidad_ant' => $cantidad_ant, 'cantidad_act' => $cantidad_act, 'id_usuario'=>$id_usuario, 'id_auth'=>$id_auth,'id_producto'=>$id_producto
-        
+
         ]);
 
         return redirect()->to('Mostrar-Reporte');
@@ -142,7 +142,7 @@ class ReporteController extends Controller
         $resultado=$stock[0]->stock;
 
         //echo $resultado;
-        
+
         if(strcmp($accion,"sumar")==0){
             $resultado=$stock[0]->stock + $cantidad;
         }else if(strcmp($accion,"restar")==0){
@@ -162,6 +162,6 @@ class ReporteController extends Controller
         ]);
 
         return redirect()->to('productos/index');
-        
+
     }
 }

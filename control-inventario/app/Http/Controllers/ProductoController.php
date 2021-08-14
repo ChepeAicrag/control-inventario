@@ -17,9 +17,9 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $productos=Producto::select('*')
-        ->where('status_delete',0)->paginate(3);
-        return view('productos/index')->with('productos',$productos);
+        $productos = Producto::select('*')
+            ->where('status_delete', 0)->paginate(3);
+        return view('productos/index')->with('productos', $productos);
     }
 
     /**
@@ -29,20 +29,23 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        $categorias = Categoria::select('id','nombre', 'descripcion')
-        -> where('status_delete', 0)
-        ->get();
-        $catalogos = Catalogo::select('id','nombre')
-        -> where('status_delete', 0)
-        ->get();
-        $bodegas = Bodega::select('id','nombre')
-        -> where('status_delete', 0)
-        ->get();
+        $categorias = Categoria::select('id', 'nombre', 'descripcion')
+            ->where('status_delete', 0)
+            ->get();
+        $catalogos = Catalogo::select('id', 'nombre')
+            ->where('status_delete', 0)
+            ->get();
+        $bodegas = Bodega::select('id', 'nombre')
+            ->where('status_delete', 0)
+            ->get();
 
         return view('Productos/crear', compact(
-            'categorias', $categorias,
-            'catalogos', $catalogos,
-            'bodegas', $bodegas,
+            'categorias',
+            $categorias,
+            'catalogos',
+            $catalogos,
+            'bodegas',
+            $bodegas,
         ));
     }
 
@@ -54,32 +57,32 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        $nombre=$request->nombre;
-        $descripcion=$request->descripcion;
-        $precio_v=$request->precio_v;
-        $precio_c =$request->precio_c;
-        $stock=$request->stock;
-        $status_delete=$request->status_delete;
-        $imagen=$request->imagen;
-        $id_categoria=$request->id_categoria;
-        $id_catalogo=$request->id_catalogo;
-        $id_bodega=$request->id_bodega;
+        $nombre = $request->nombre;
+        $descripcion = $request->descripcion;
+        $precio_v = $request->precio_v;
+        $precio_c = $request->precio_c;
+        $stock = $request->stock;
+        $status_delete = $request->status_delete;
+        $imagen = $request->imagen;
+        $id_categoria = $request->id_categoria;
+        $id_catalogo = $request->id_catalogo;
+        $id_bodega = $request->id_bodega;
 
 
         Producto::create([
-            'nombre'=>$nombre,
-            'descripcion'=>$descripcion,
-            'precio_v'=>$precio_v,
-            'precio_c'=>$precio_c,
-            'stock'=>$stock,
-            'status_delete'=>false,
-            'imagen'=>"imagen",
-            'id_categoria'=>$id_categoria,
-            'id_catalogo'=>$id_catalogo,
-            'id_bodega'=>$id_bodega
+            'nombre' => $nombre,
+            'descripcion' => $descripcion,
+            'precio_v' => $precio_v,
+            'precio_c' => $precio_c,
+            'stock' => $stock,
+            'status_delete' => false,
+            'imagen' => "imagen",
+            'id_categoria' => $id_categoria,
+            'id_catalogo' => $id_catalogo,
+            'id_bodega' => $id_bodega
         ]);
 
-       return redirect()->to('/productos/index');
+        return redirect()->to('/productos/index');
     }
 
     /**
@@ -90,7 +93,7 @@ class ProductoController extends Controller
      */
     public function show(Producto $producto)
     {
-        return view('productos.show',compact('producto',$producto));
+        return view('productos.show', compact('producto', $producto));
     }
 
     /**
@@ -101,7 +104,21 @@ class ProductoController extends Controller
      */
     public function edit(Producto $producto)
     {
-        return view('productos.edit',compact('producto'));
+        $categorias = Categoria::select('id', 'nombre', 'descripcion')
+            ->where('status_delete', 0)
+            ->get();
+        $catalogos = Catalogo::select('id', 'nombre')
+            ->where('status_delete', 0)
+            ->get();
+        $bodegas = Bodega::select('id', 'nombre')
+            ->where('status_delete', 0)
+            ->get();
+        return view('productos.edit', compact(
+            'producto',
+            'categorias',
+            'catalogos',
+            'bodegas'
+        ));
     }
 
     /**
@@ -113,16 +130,16 @@ class ProductoController extends Controller
      */
     public function update(Request $request, Producto $producto)
     {
-        $producto->nombre=$request->nombre;
-        $producto->descripcion=$request->descripcion;
-        $producto->precio_v=$request->precio_v;
-        $producto->precio_c =$request->precio_c;
-        $producto->stock=$request->stock;
-        $producto->status_delete=$producto->status_delete;
-        $producto->imagen="imagen";
-        $producto->id_categoria=$request->id_categoria;
-        $producto->id_catalogo=$request->id_catalogo;
-        $producto->id_bodega=$request->id_bodega;
+        $producto->nombre = $request->nombre;
+        $producto->descripcion = $request->descripcion;
+        $producto->precio_v = $request->precio_v;
+        $producto->precio_c = $request->precio_c;
+        $producto->stock = $request->stock;
+        $producto->status_delete = $producto->status_delete;
+        $producto->imagen = "imagen";
+        $producto->id_categoria = $request->id_categoria;
+        $producto->id_catalogo = $request->id_catalogo;
+        $producto->id_bodega = $request->id_bodega;
 
         //si el usuario sube una nueva imagen
 
@@ -137,13 +154,13 @@ class ProductoController extends Controller
      * @param  \App\Models\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $producto)
+    public function destroy($producto)
     {
         Producto::select('*')
-        ->where('id',$producto)
-        ->update([
-            'status_delete' => 1
-        ]);
+            ->where('id', $producto)
+            ->update([
+                'status_delete' => 1
+            ]);
         return redirect()->to('/productos/index');
     }
 }
