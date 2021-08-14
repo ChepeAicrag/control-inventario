@@ -61,3 +61,7 @@ Route::get('Mostrar-Reporte','App\Http\Controllers\ReporteController@show');
 Route::get('Editar-Reporte/{reporte}','App\Http\Controllers\ReporteController@edit');
 Route::post('Actualizar-Reporte','App\Http\Controllers\ReporteController@update');
 Route::get('Baja-Reporte/{reporte}','App\Http\Controllers\ReporteController@destroy');
+
+/*RUTAS DEL STOCK*/
+Route::get('Stock/{producto}','App\Http\Controllers\ReporteController@stock');
+Route::post('StockP','App\Http\Controllers\ReporteController@stockP');
