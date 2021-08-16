@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-function Example() {
+function SelectN() {
     return (
         <div className="container">
             <div className="row justify-content-center">
@@ -17,8 +17,8 @@ function Example() {
     );
 }
 
-export default Example;
+export default SelectN;
 
-if (document.getElementById('example')) {
-    ReactDOM.render(<Example />, document.getElementById('example'));
+if (document.getElementById('selectN')) {
+    ReactDOM.render(<SelectN />, document.getElementById('selectN'));
 }

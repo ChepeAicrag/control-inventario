@@ -33,13 +33,13 @@
 
         <div class="fila">
             <div class="mt-3 preparacion">
-                <h3 class="my-3 ">Precio de Venta: </h3>
-                {!!$producto->precio_v!!}
+                <h4 class="my-3 ">Precio de Venta: </h4>
+                ${!!$producto->precio_v!!}
             </div>
     
             <div class="preparacion">
-                <h3 class="my-3 ">Precio Compra: </h3>
-                {!!$producto->precio_c!!}
+                <h4 class="mr-5">Precio Compra: </h4>
+                ${!!$producto->precio_c!!}
             </div>
         </div>
 

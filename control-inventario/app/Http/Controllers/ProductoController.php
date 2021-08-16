@@ -29,6 +29,7 @@ class ProductoController extends Controller
      */
     public function create()
     {
+       
         $categorias = Categoria::select('id', 'nombre', 'descripcion')
             ->where('status_delete', 0)
             ->get();
@@ -57,6 +58,19 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
+        $data=request()->validate(
+            [
+                'nombre' => 'required|min:3',
+                'descripcion' => 'required|min:6',
+                'precio_v' =>'required',
+                'precio_c' => 'required',
+                'stock' => 'required',
+                'id_categoria' => 'required',
+                'id_catalogo' => 'required',
+                'id_bodega' => 'required'
+            ]
+            );
+
         $nombre = $request->nombre;
         $descripcion = $request->descripcion;
         $precio_v = $request->precio_v;
@@ -70,16 +84,16 @@ class ProductoController extends Controller
 
 
         Producto::create([
-            'nombre' => $nombre,
-            'descripcion' => $descripcion,
-            'precio_v' => $precio_v,
-            'precio_c' => $precio_c,
-            'stock' => $stock,
+            'nombre' => $data['nombre'],
+            'descripcion' => $data['descripcion'],
+            'precio_v' => $data['precio_v'],
+            'precio_c' => $data['precio_c'],
+            'stock' => $data['stock'],
             'status_delete' => false,
             'imagen' => "imagen",
-            'id_categoria' => $id_categoria,
-            'id_catalogo' => $id_catalogo,
-            'id_bodega' => $id_bodega
+            'id_categoria' => $data['id_categoria'],
+            'id_catalogo' => $data['id_catalogo'],
+            'id_bodega' => $data['id_bodega']
         ]);
 
         return redirect()->to('/productos/index');
