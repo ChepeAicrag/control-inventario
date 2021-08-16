@@ -48,7 +48,10 @@
                 <h3 class="my-3 ">Bodega: </h3>
                 {{$producto->id_bodega}}
               </div>
-
+            <div class="preparacion">
+                <h3 class="my-3">Stock: </h3>
+                {{$producto->stock}}
+            </div>
         </div>
         </div>
 

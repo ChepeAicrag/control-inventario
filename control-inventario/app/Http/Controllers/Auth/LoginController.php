@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use \Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -21,7 +19,7 @@ class LoginController extends Controller
     |
     */
 
-    #use AuthenticatesUsers;
+    use AuthenticatesUsers;
 
     /**
      * Where to redirect users after login.
@@ -37,30 +35,6 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except(Auth::logout());
-    }
-
-    public function logout(){
-        Auth::logout();
-        return redirect()->intended('home');
-    }
-
-    public function showLoginForm()
-    {
-      return view('auth.login');
-    }
-
-    public function login(Request $request)
-    {
-        $this->validate($request, [
-            'email' => ['required', 'string', 'email', 'max:255'],
-            'password' => ['required', 'string', 'min:8'],
-        ]);
-        $email = $request->only('email');
-        $password = $request->password;
-        if (Auth::attempt(['email' => $email, 'password' => $password, 'status_delete' => 0], $request->remember)) {
-            return redirect()->intended('productos');
-        }
-        return redirect()->intended('login');
+        $this->middleware('guest')->except('logout');
     }
 }

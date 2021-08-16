@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('/auth/login');
 
 });
 
@@ -74,3 +74,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 /*RUTAS DEL STOCK*/
 Route::get('Stock/{producto}','App\Http\Controllers\ReporteController@stock');
 Route::post('StockP','App\Http\Controllers\ReporteController@stockP');
+
+/* Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+ */
