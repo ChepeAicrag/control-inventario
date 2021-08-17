@@ -35,7 +35,7 @@
                             <a href="{{action('App\Http\Controllers\ProductoController@edit',['producto'=>$producto->id])}}" class="btn btn-dark mr-1 mb-2 d-block w-100">Editar</a>
                             <a href="{{action('App\Http\Controllers\ProductoController@show',['producto'=>$producto->id])}}" class="btn btn-success mr-1 mb-2 d-block w-100">Ver</a>
                             <a  href="/productos/delete/{{$producto->id}}" class="btn btn-danger mr-1 mb-2 d-block w-100">Eliminar</a>
-                            <a href="../Stock/{{$producto->id}}" class="btn btn-secundary mr-1 mb-2 d-block w-100">Stock</a>
+                            <a href="../Stock/{{$producto->id}}" class="btn btn-warning mr-1 mb-2 d-block w-100">Stock</a>
                         </td>
                     </tr>
                 @endforeach

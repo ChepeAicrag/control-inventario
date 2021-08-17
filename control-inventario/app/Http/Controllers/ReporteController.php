@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Reporte;
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use App\Exports\ReporteExport;
+use Maatwebsite\Excel\Facades\Excel;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class ReporteController extends Controller
 {
@@ -164,4 +167,21 @@ class ReporteController extends Controller
         return redirect()->to('productos/index');
 
     }
+
+    public function exportxlsx()
+    {
+        return Excel::download(new ReporteExport, 'Reporte.xlsx');
+    }
+
+    public function exportpdf()
+    {
+        $ver = Reporte::select('id','accion','cantidad','cantidad_ant','cantidad_act','id_usuario','id_auth','id_producto')
+        ->where('status_delete',0)
+        ->get();
+
+        $pdf = PDF::loadView('pdf',compact('ver'));         
+        
+        return $pdf->stream();
+    }
 }
+

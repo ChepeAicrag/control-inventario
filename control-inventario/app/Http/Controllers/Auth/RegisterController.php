@@ -10,11 +10,13 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\RedirectsUsers;
 
 use App\Models\User;
 
 class RegisterController extends Controller
 {
+    use RedirectsUsers;
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -104,7 +106,7 @@ class RegisterController extends Controller
                 );
             return  redirect('Mostrar-catalogo');
         }else{
-            return  redirect('home');
+            return  redirect('login');
         }
     }
 
@@ -117,6 +119,20 @@ class RegisterController extends Controller
     {
         return Auth::guard();
     }
+
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function registered(Request $request, $user)
+    {
+        //
+    }
+
+
 
     /**
      * Create a new user instance after a valid registration.
