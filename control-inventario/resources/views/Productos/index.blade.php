@@ -4,9 +4,10 @@
     <link href="{{ asset('css/Productos/index.css') }}" rel="stylesheet">
 @endsection
 
+
 @section('botones')
-   <a href="{{ url('/inicio') }}" class=" mt-5 volver btn btn-dark"> Volver</a>
-   <a href="{{ url('/productos') }}" class=" mt-5 volver btn btn-secondary"> Agregar Producto +</a>
+   <a href="{{ url('/inicio') }}" class=" mt-2 volver btn btn-dark"> Volver</a>
+   <a href="{{ url('/productos') }}" class=" mt-2 volver btn btn-secondary"> Agregar Producto +</a>
 @endsection
 
 
@@ -14,7 +15,7 @@
 
 
 <div class="col-md-10  mx-auto p-3">
-    <h2 class="text-center  mb-3">Productos</h2>
+    <h2 class="text-center  mb-4">PRODUCTOS</h2>
         <table class="table">
             <thead class="bg-dark text-light">
                 <tr>
