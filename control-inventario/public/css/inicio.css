@@ -88,3 +88,15 @@ nav{
   color: blanchedalmond !important;
   font-size: 19px;
 }
+
+.dropdown-menu{
+    background:#252323;
+   
+}
+.dropdown-item{
+    color: cornsilk !important;
+}
+
+.dropdown-item:hover{
+    background:#5c5b5b;
+}

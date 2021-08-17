@@ -72,7 +72,7 @@ class ProductoController extends Controller
             );
 
             $ruta_imagen="";
-            if ($request['imagen']) {
+            if ($request->file('imagen')->isValid()) {
     
                 $ruta_imagen=$request['imagen']->store('upload-productos','public');
     
@@ -163,13 +163,24 @@ class ProductoController extends Controller
      */
     public function update(Request $request, Producto $producto)
     {
+        $ruta_imagen="";
+            if ($request['imagen']) {
+    
+                $ruta_imagen=$request['imagen']->store('upload-productos','public');
+    
+                //Reajustar la imgaeb
+                $img=Image::make(public_path("storage/{$ruta_imagen}"))->resize(400,150);
+                $img->save();
+           
+            }
+
         $producto->nombre = $request->nombre;
         $producto->descripcion = $request->descripcion;
         $producto->precio_v = $request->precio_v;
         $producto->precio_c = $request->precio_c;
         $producto->stock = $request->stock;
         $producto->status_delete = $producto->status_delete;
-        $producto->imagen = "imagen";
+        $producto->imagen = $ruta_imagen;
         $producto->id_categoria = $request->id_categoria;
         $producto->id_catalogo = $request->id_catalogo;
         $producto->id_bodega = $request->id_bodega;

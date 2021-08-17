@@ -5,30 +5,30 @@
 @endsection
 
 @section('botones')
-   <a href="{{ url('/productos/index') }}" class=" mt-3 volver btn btn-dark"> Volver</a>
+    <div class="regresar">
+        <a href="{{ url('/productos/index') }}" class=" volver"> <img class="imagen" src="../imagenes/regresar.png" /></a>
+    </div>
 @endsection
 @section('content')
 
 <article class="contenido-receta">
-    <h1 class="titulo mt-4 mb-5">{{$producto->nombre}}</h1>
+    <h1 class="titulo mb-4">{{$producto->nombre}}</h1>
 </article>
-<div class="imagen-receta mb-5">
+<div class="imagen-receta">
     <img src="/storage/{{$producto->imagen}}" class="w-100" alt="">
 </div>
-<h2 class="mb-3">Detalles:</h2>
+<h2 class="mb-3 mt-5 ">Detalles:</h2>
 <div class=" contenedor-vista mb-5">
-
-    
-
     <div class="caracteristicas">
+        
         <div class="fila">
             <div class="preparacion">
-                <h3 class="my-3">Categoria: </h3>
+                <h3 class="my-3 nom">Categoria: </h3>
                 {{$categorias[0]->nombre}}
             </div>
         
             <div class="preparacion">
-                <h3 class="my-3 ">Catalogo:</h3>
+                <h3 class="my-3 nom">Catálogo:</h3>
                 {{$catalogos[0]->nombre}}
             </div>
         
@@ -36,23 +36,23 @@
 
         <div class="fila">
             <div class=" preparacion">
-                <h4 class="my-3 ">Precio de Venta: </h4>
+                <h4 class="my-3 nom">Precio de Venta: </h4>
                 ${!!$producto->precio_v!!}
             </div>
     
             <div class="preparacion">
-                <h4 class="my-3">Precio Compra: </h4>
+                <h4 class="my-3  nom ">Precio Compra: </h4>
                 ${!!$producto->precio_c!!}
             </div>
         </div>
 
         <div class="fila">
             <div class="preparacion">
-                <h3 class="my-3 ">Bodega: </h3>
+                <h3 class="my-3 nom">Bodega: </h3>
                 {{$bodegas[0]->nombre}}
               </div>
             <div class="preparacion">
-                <h3 class="my-3">Stock: </h3>
+                <h3 class="my-3 nom">Stock: </h3>
                 {{$producto->stock}}
             </div>
         </div>
@@ -60,8 +60,8 @@
 
         
     
-       <div class="descripcion">
-            <h3 class="my-3">Descripción: </h3>
+       <div class="descripcion ">
+            <h3 class="nom">Descripción: </h3>
             {!!$producto->descripcion!!}
       </div>
         
