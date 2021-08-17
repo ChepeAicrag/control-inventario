@@ -75,7 +75,6 @@ Auth::routes();
 Route::get('Stock/{producto}','App\Http\Controllers\ReporteController@stock');
 Route::post('StockP','App\Http\Controllers\ReporteController@stockP');
 
-/* Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
- */
+/*RUTAS DE EXPORTACION*/
+Route::get('Exportar-Reporte','App\Http\Controllers\ReporteController@exportxlsx');
+Route::get('PDF-Reporte','App\Http\Controllers\ReporteController@exportpdf');
