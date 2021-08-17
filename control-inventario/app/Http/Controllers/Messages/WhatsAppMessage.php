@@ -1,11 +1,11 @@
 <?php
-namespace App\Channels;
+namespace App\Http\Controllers\Messages;
 
 use Twilio\Rest\Client;
 
-class WhatsAppChannel
+class WhatsAppMessage
 {
-    public function send($message, $to)
+    public static function send($message, $to)
     {
         $from = config('services.twilio.whatsapp_from');
 
