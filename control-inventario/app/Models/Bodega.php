@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Bodega extends Model
 {
     use HasFactory;
+    protected $table = 'bodegas';
+    protected $primarykey = 'id';
+    public $timestamps = true;
+    protected $fillable = [
+        'nombre', 'descripcion', 'direccion', 'status_delete'
+    ];
 }

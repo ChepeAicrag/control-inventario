@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoria;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class CategoriaController extends Controller
 {
@@ -24,7 +25,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('Categoria/CategoriaAlta');
     }
 
     /**
@@ -35,7 +36,16 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nombre= $request->nombre;
+        $descripcion=$request->descripcion;
+        $status_delete= false;
+
+        Categoria:: create([
+            'nombre' => $nombre, 
+            'descripcion' => $descripcion, 
+            'status_delete' => $status_delete
+        ]);
+        return redirect()->to('Categoria-alta');
     }
 
     /**
@@ -46,7 +56,10 @@ class CategoriaController extends Controller
      */
     public function show(Categoria $categoria)
     {
-        //
+        $verCategoria=Categoria::select('id','nombre','descripcion','created_at')
+        -> where('status_delete',0)
+        ->get();
+        return view ('Categoria/CategoriaVer')->with('categoria',$verCategoria);
     }
 
     /**
@@ -55,9 +68,12 @@ class CategoriaController extends Controller
      * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categoria $categoria)
+    public function edit($id)
     {
-        //
+        $categoria= categoria::select('id','nombre','descripcion')
+        ->where('id',$id)
+        ->first();
+        return view('Categoria/CategoriaEditar')->with('categoria',$categoria);
     }
 
     /**
@@ -69,7 +85,17 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, Categoria $categoria)
     {
-        //
+        $nombre = $request->nombre;
+        $descripcion = $request->descripcion;
+        $id = $request->id;
+
+        Categoria::select('id','nombre','descripcion')
+        ->where('id',$id)
+        ->update([
+            'nombre' => $nombre, 
+            'descripcion' => $descripcion
+        ]);
+        return redirect()->to('Categoria-ver');
     }
 
     /**
@@ -78,8 +104,13 @@ class CategoriaController extends Controller
      * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categoria $categoria)
+    public function destroy($categoria)
     {
-        //
+        Categoria::select('id','nombre','descripcion')
+        ->where('id',$categoria)
+        ->update([
+            'status_delete' => 1
+        ]);
+        return redirect()->to('Categoria-ver');
     }
 }
