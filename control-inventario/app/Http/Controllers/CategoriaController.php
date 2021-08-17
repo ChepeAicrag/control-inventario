@@ -47,7 +47,7 @@ class CategoriaController extends Controller
             'descripcion' => $descripcion, 
             'status_delete' => $status_delete
         ]);
-        return redirect()->to('Categoria-alta');
+        return redirect()->to('Categoria-ver');
     }
 
     /**
