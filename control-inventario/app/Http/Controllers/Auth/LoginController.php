@@ -42,7 +42,7 @@ class LoginController extends Controller
 
     public function logout(){
         Auth::logout();
-        return redirect()->intended('home');
+        return redirect()->to('/login');
     }
 
     public function showLoginForm()
@@ -59,7 +59,7 @@ class LoginController extends Controller
         $email = $request->only('email');
         $password = $request->password;
         if (Auth::attempt(['email' => $email, 'password' => $password, 'status_delete' => 0], $request->remember)) {
-            return redirect()->intended('productos');
+            return redirect()->to('/inicio');
         }
         return redirect()->intended('login');
     }

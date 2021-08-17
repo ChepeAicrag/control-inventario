@@ -16,10 +16,7 @@
     align-items: center;
 }
 
-.titulo{
-    height: 10%;
 
-}
 
 .card{
     height: 25rem;
@@ -39,10 +36,20 @@
 .card:hover {
     height: 27.2rem;
     width: 23.7rem;
-    box-shadow: 0px 15px 70px rgb(0, 0, 0);
+    box-shadow: 0px 15px 70px rgb(204, 189, 189);
 }
 
 img{
     width: 9rem;
     height: 13rem;
+}
+
+.titulo{
+    font-family: 'EB Garamond', serif;
+    height: 10%;
+}
+
+.letra-negra{
+    font-family: 'STIX Two Text', serif;
+    color: black !important;
 }

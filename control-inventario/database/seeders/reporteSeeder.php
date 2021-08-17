@@ -23,6 +23,8 @@ class reporteSeeder extends Seeder
             'id_categoria' => 1,
             'id_catalogo' => 1,
             'descripcion' => 'es una llanta',
+            'created_at'=>date('Y-m-d H:i:s'),
+            'updated_at'=>date('Y-m-d H:i:s')
         ]);
     }
 }

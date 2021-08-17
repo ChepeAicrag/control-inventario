@@ -1,0 +1,33 @@
+.card{
+    background: #252323;
+    color: blanchedalmond;
+    box-shadow: 0px 20px 60px rgba(0, 0, 0, 0.808);
+    font-family: 'STIX Two Text', serif;
+}
+
+.card-header{
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-body{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    height: 100%;
+    width: 100%;
+}
+
+.centro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

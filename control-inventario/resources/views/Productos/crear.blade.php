@@ -5,13 +5,16 @@
 @endsection
 
 @section('botones')
-   <a href="{{ url('/productos/index') }}" class=" volver btn btn-dark"> Volver</a>
+    <div class="regresar">
+        <a href="{{ url('/productos/index') }}" class=" volver"> <img src="imagenes/regresar.png" /></a>
+    </div>
+   
 @endsection
 @section('content')
 
 
     {{-- <div id="example"></div> --}}
-    <div class="  mb-5 contenedor-form row justify-content-center mt-5">
+    <div class="  mb-5 contenedor-form row justify-content-center mt-4">
         <div class=" formulario mb-5">
             <h2 class="text-center mb-5">Agregar Producto</h2>
             <form id="formulario" class="" method="POST" action="{{url('productos/crear')}}" enctype="multipart/form-data" novalidate>
@@ -75,7 +78,7 @@
                 <div class="form-group mt-3">
                     <label for="id_bodega">Bodega</label>
 
-                    <select name="id_bodega"
+                     <select name="id_bodega"
                             class="form-control form-control-lg @error ('id_bodega') is-invalid @enderror"
                             id="id_bodega">
 
@@ -147,7 +150,7 @@
                 <div class="form-group mt-3">
                     <label for="imagen">Imagen</label>
                     <input type="file"
-                            class="form-control  @error ('preparacion') is-invalid @enderror"
+                            class="form-control  @error ('imagen') is-invalid @enderror"
                             id="imagen"
                             name="imagen"
                             value="{{old('imagen')}}">

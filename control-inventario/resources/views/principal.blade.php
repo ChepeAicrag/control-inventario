@@ -7,15 +7,15 @@
 @section('content')
 
     <h1 class="text-center mt-3 mb-5">CONTROL DE INVENTARIO</h1>
-    <h4 class="text-center">Elige una opción</h4>
+    <h4 class="letra-negra">Elige una opción</h4>
     <div class="menu">
         <div class="opciones ">
             <div class="card" >
                 <img src="imagenes/llanta.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">Productos</h5>
-                  <p class="card-text">Elegir esta opcion si desea realizar una ver, agregar o eliminar un producto.</p>
-                  <a href="{{route('productos.index')}}" class="btn btn-primary"> Ir a productos</a>
+                  <p class=" letra">Elegir esta opcion si desea realizar una ver, agregar o eliminar un producto.</p>
+                  <a href="{{route('productos.index')}}" class="btn btn-light"> Ir a productos</a>
                 </div>
             </div>
     
@@ -23,8 +23,8 @@
                 <img src="imagenes/folleto.png" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">Catálogos</h5>
-                  <p class="card-text">Elegir esta opcion si desea  ver, agregar o eliminar un catalogo.</p>
-                  <a href="{{route('catalogo.index')}}" class="btn btn-primary"> Ir a cátalogos</a>
+                  <p class="letra">Elegir esta opcion si desea  ver, agregar o eliminar un catálogo.</p>
+                  <a href="{{route('catalogo.index')}}" class="btn btn-light"> Ir a cátalogos</a>
                 </div>
             </div>
         </div>
@@ -34,8 +34,8 @@
                 <img src="imagenes/bodega.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">Bodegas</h5>
-                  <p class="card-text">Elegir esta opción si desea ver, agregar o eliminar una bodega.</p>
-                  <a href="{{route('bodega.index')}}" class="btn btn-primary"> Ir a Bodegas</a>
+                  <p class="letra">Elegir esta opción si desea ver, agregar o eliminar una bodega.</p>
+                  <a href="{{route('bodega.index')}}" class="btn btn-light"> Ir a Bodegas</a>
                 </div>
             </div>
 
@@ -43,8 +43,8 @@
                 <img src="imagenes/reporte.png" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">Reportes</h5>
-                  <p class="card-text">Elegir esta opcion si desea ver los reportes.</p>
-                  <a href="{{route('reporte.show')}}" class="btn btn-primary"> Ir a Reportes</a>
+                  <p class="letra">Elegir esta opcion si desea ver los reportes.</p>
+                  <a href="{{route('reporte.show')}}" class="btn btn-light"> Ir a Reportes</a>
                 </div>
             </div>
           
@@ -55,8 +55,8 @@
                 <img src="imagenes/categoria.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">Categorias</h5>
-                  <p class="card-text">Elegir esta opción si desea ver, agregar o eliminar una categoria.</p>
-                  <a href="{{route('categoria.index')}}" class="btn btn-primary"> Ir a Categorias</a>
+                  <p class="letra">Elegir esta opción si desea ver, agregar o eliminar una categoria.</p>
+                  <a href="{{route('categoria.index')}}" class="btn btn-light"> Ir a Categorias</a>
                 </div>
             </div>
         </div>

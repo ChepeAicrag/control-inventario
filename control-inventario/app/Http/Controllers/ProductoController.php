@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Categoria;
 use App\Models\Catalogo;
 use App\Models\Bodega;
-
+use Intervention\Image\Facades\Image;
 class ProductoController extends Controller
 {
     /**
@@ -71,16 +71,16 @@ class ProductoController extends Controller
             ]
             );
 
-        $nombre = $request->nombre;
-        $descripcion = $request->descripcion;
-        $precio_v = $request->precio_v;
-        $precio_c = $request->precio_c;
-        $stock = $request->stock;
-        $status_delete = $request->status_delete;
-        $imagen = $request->imagen;
-        $id_categoria = $request->id_categoria;
-        $id_catalogo = $request->id_catalogo;
-        $id_bodega = $request->id_bodega;
+            $ruta_imagen="";
+            if ($request['imagen']) {
+    
+                $ruta_imagen=$request['imagen']->store('upload-productos','public');
+    
+                //Reajustar la imgaeb
+                $img=Image::make(public_path("storage/{$ruta_imagen}"))->resize(400,150);
+                $img->save();
+           
+            }
 
 
         Producto::create([
@@ -90,7 +90,7 @@ class ProductoController extends Controller
             'precio_c' => $data['precio_c'],
             'stock' => $data['stock'],
             'status_delete' => false,
-            'imagen' => "imagen",
+            'imagen' => $ruta_imagen,
             'id_categoria' => $data['id_categoria'],
             'id_catalogo' => $data['id_catalogo'],
             'id_bodega' => $data['id_bodega']
@@ -107,7 +107,26 @@ class ProductoController extends Controller
      */
     public function show(Producto $producto)
     {
-        return view('productos.show', compact('producto', $producto));
+        $categorias = Categoria::select('id', 'nombre', 'descripcion')
+            ->where('id', $producto->id_categoria)
+            ->get();
+        $catalogos = Catalogo::select('id', 'nombre')
+            ->where('id', $producto->id_catalogo)
+            ->get();
+        $bodegas = Bodega::select('id', 'nombre')
+            ->where('id', $producto->id_bodega)
+            ->get();
+            
+        return view('productos.show', compact(
+            'producto', 
+            $producto,
+            'categorias',
+            $categorias,
+            'catalogos',
+            $catalogos,
+            'bodegas',
+            $bodegas,
+        ));
     }
 
     /**
