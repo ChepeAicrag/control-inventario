@@ -73,7 +73,7 @@ Auth::routes();
 
 /*RUTAS DEL STOCK*/
 Route::get('Stock/{producto}','App\Http\Controllers\ReporteController@stock');
-Route::post('StockP','App\Http\Controllers\ReporteController@stockP');
+Route::post('StockP','App\Http\Controllers\ReporteController@stockP')->name('stock.show');
 
 /*RUTAS DE EXPORTACION*/
 Route::get('Exportar-Reporte','App\Http\Controllers\ReporteController@exportxlsx');

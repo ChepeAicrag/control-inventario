@@ -9,7 +9,11 @@
 
 @section('botones')
     <a href="{{ url('/inicio') }}" class=" mt-3 volver btn btn-dark"> Volver</a>
-    <a href="{{ url('/Crear-Reporte') }}" class=" mt-3 volver btn btn-secondary"> Agregar Categoria +</a>
+    <a href="../PDF-Reporte" target="_blank"
+                                class="btn btn-danger mt-3">PDF</a>
+                                <a href="../Exportar-Reporte"
+                                class="btn btn-success mt-3">EXCEL</a>                            
+    {{-- <a href="{{ url('/Crear-Reporte') }}" class=" mt-3 volver btn btn-secondary"> Agregar Categoria +</a> --}}
 @endsection
 
 
@@ -70,7 +74,7 @@
                     <th scole="col">ID Usuario</th>
                     <th scole="col">ID Autorizacion</th>
                     <th scole="col">ID Producto</th>
-                    <th scole="col">Acciones</th>
+                    {{-- <th scole="col">Generar</th> --}}
 
                 </tr>
             </thead>
@@ -85,11 +89,11 @@
                         <td>{{ $x->id_auth }}</td>
                         <td>{{ $x->id_producto }}</td>
                         <td>
-                            <a href="../Editar-Reporte/{{ $x->id }}"
-                                class="btn btn-dark mr-1 mb-2 d-block w-100">Editar</a>
-                            <a href="" class="btn btn-success mr-1 mb-2 d-block w-100">Ver</a>
-                            <a href="../Baja-Reporte/{{ $x->id }}"
-                                class="btn btn-danger mr-1 mb-2 d-block w-100">Eliminar</a>
+                           {{--  <a href="../PDF-Reporte" target="_blank"
+                                class="btn btn-danger mr-1 mb-2 d-block w-100">PDF</a> 
+                            <a href="" class="btn btn-success mr-1 mb-2 d-block w-100">PDF</a>
+                            <a href="../Exportar-Reporte"
+                                class="btn btn-success mr-1 mb-2 d-block w-100">EXCEL</a>  --}}
                         </td>
 
 
