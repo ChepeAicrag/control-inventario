@@ -7,25 +7,31 @@
 @endsection
 
 @section('botones')
-    <a href="{{ url('Catalogo') }}" class=" volver btn btn-primary"> Volver</a>
+    <div class="regresar">
+        <a href="{{ url('Catalogo') }}" class=" mt-3 volver"> <img class="imagen" src="../imagenes/regresar.png" /></a>
+    </div>
 @endsection
 @section('content')
 
     <article class="contenido-receta">
-        <h1 class="titulo mt-5 mb-10">{{ $catalogo->nombre }}</h1>
+        <h1 class="titulo mt-5 mb-5">{{ $catalogo->nombre }}</h1>
     </article>
 
     <div class=" contenedor-vista mb-5">
-
         <div class="caracteristicas">
-            <div class="fila">
+        
+            {{-- <div class="fila">
                 <div class="preparacion">
-                    <h3 class="my-3 ">Descripcion:</h3>
-                    {{ $catalogo->descripcion }}
+                    <h3 class="my-3 nom">Fecha Creación: </h3>
+                    {{$catalogo->created_at}}
                 </div>
-            </div>
-
-
+            
+            </div> --}}
+     
+        </div>
+        <div class="descripcion mt-3 ">
+            <h3 class="nom">Descripción: </h3>
+            {!!$catalogo->descripcion!!}
         </div>
 
     @endsection

@@ -7,7 +7,9 @@
 @endsection
 
 @section('botones')
-    <a href="{{ url('Mostrar-bodega') }}" class=" volver btn btn-primary"> Volver</a>
+    <div class="regresar">
+        <a href="{{ url('Mostrar-bodega') }}" class=" mt-3 volver"> <img class="imagen" src="../imagenes/regresar.png" /></a>
+    </div>
 @endsection
 @section('content')
 
@@ -15,12 +17,12 @@
         <h1 class="titulo mt-5 mb-10">{{ $bodega->nombre }}</h1>
     </article>
 
-    <div class=" contenedor-vista mb-5">
+    <div class=" contenedor-vista mt-5 mb-5">
 
         <div class="caracteristicas">
             <div class="fila">
                 <div class="preparacion">
-                    <h3 class="my-3">Bodegas: </h3>
+                    <h3 class="my-3">ID de la Bodegas: </h3>
                     {{ $bodega->id }}
                 </div>
 

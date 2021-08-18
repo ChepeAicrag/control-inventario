@@ -7,7 +7,9 @@
 @endsection
 
 @section('botones')
-    <a href="{{ url('Categoria-ver') }}" class=" volver btn btn-primary"> Volver</a>
+    <div class="regresar">
+        <a href="{{ url('Categoria-ver') }}" class=" mt-3 volver"> <img class="imagen" src="../imagenes/regresar.png" /></a>
+    </div>
 @endsection
 @section('content')
 
@@ -15,17 +17,11 @@
         <h1 class="titulo mt-5 mb-10">{{ $categoria->nombre }}</h1>
     </article>
 
-    <div class=" contenedor-vista mb-5">
+    <div class=" contenedor-vista mt-5 mb-5">
 
-        <div class="caracteristicas">
-            <div class="fila">
-                <div class="preparacion">
-                    <h3 class="my-3 ">Descripcion:</h3>
-                    {{ $categoria->descripcion }}
-                </div>
-            </div>
-
-
+        <div class="descripcion mt-3 ">
+            <h3 class="nom">Descripción: </h3>
+            {!!$categoria->descripcion!!}
         </div>
 
     @endsection
