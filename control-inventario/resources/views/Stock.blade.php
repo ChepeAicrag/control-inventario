@@ -63,12 +63,29 @@
             </div>
             <div class="form-group mt-3">
                 <label for="id_usuario">ID Usuario:</label>
-                <input type="number"  name="id_usuario" step="1.00">
+                {{--<input type="number"  name="id_usuario" step="1.00">--}}
+                    <select name="id_usuario"
+                            class="form-control form-control-lg @error ('id_usuario') is-invalid @enderror"
+                            id="id_usuario">
+
+                        <option value="">-- Seleccione --</option>
+                        @foreach ($users as $users)
+                            <option value={{$users->id}}>{{$users->nombre}}</option>
+                        @endforeach
+
+
+                    </select>
+
+                    @error('id_usuario')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <p class="errores">{{"Seleccione un usuario"}}</p>
+                        </span>
+                    @enderror
 
             </div>
             <div class="form-group mt-3">
                 <label for="id_auth">ID Auth:</label>
-                <input type="number"  name="id_auth" step="1.00">
+                <input type="number"  name="id_auth" step="0.00" value= {{ Auth::user()->id }}>
 
             </div>
             <div class="form-group mt-3">
