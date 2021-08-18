@@ -7,7 +7,7 @@
 @endsection
 
 @section('botones')
-    <a href="{{ url('Mostrar-bodega') }}" class=" volver btn btn-primary"> Volver</a>
+    <a href="{{ url('Mostrar-bodega') }}" class=" volver btn btn-dark"> Volver</a>
 @endsection
 @section('content')
 

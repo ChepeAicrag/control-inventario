@@ -47,7 +47,6 @@
                             <a  href="../Baja-catalogo/{{$x->id}}" class="btn btn-danger mr-1 mb-2 d-block w-100">Eliminar</a>
                         </td>
                       
-                        
                     </tr>
                 @endforeach
                

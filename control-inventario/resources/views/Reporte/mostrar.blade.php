@@ -5,61 +5,14 @@
         crossorigin="anonymous" />
     <link href="{{ asset('css/Productos/index.css') }}" rel="stylesheet">
 @endsection
-
-
 @section('botones')
     <a href="{{ url('/inicio') }}" class=" mt-3 volver btn btn-dark"> Volver</a>
     <a href="../PDF-Reporte" target="_blank"
-                                class="btn btn-danger mt-3">PDF</a>
+                                class="mt-3 volver btn btn-danger ">PDF</a>
                                 <a href="../Exportar-Reporte"
-                                class="btn btn-success mt-3">EXCEL</a>                            
+                                class="mt-3 volver btn btn-success ">EXCEL</a>                            
     {{-- <a href="{{ url('/Crear-Reporte') }}" class=" mt-3 volver btn btn-secondary"> Agregar Categoria +</a> --}}
 @endsection
-
-
-{{-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mostrar Reporte</title>
-</head>
-
-<body>
-    <h3> Tabla de Reporte </h3>
-    <br>
-    <table border="1">
-        <tr>
-            <td>id</td>
-            <td>accion</td>
-            <td>cantidad</td>
-            <td>cantidad_ant</td>
-            <td>cantidad_act</td>
-            <td>id usuario</td>
-            <td>id autorizacion</td>
-            <td>id producto</td>
-        </tr>
-        @foreach ($ver as $x)
-            <tr>
-                <td>{{ $x->id }}</td>
-                <td>{{ $x->accion }}</td>
-                <td>{{ $x->cantidad }}</td>
-                <td>{{$x->cantidad_ant}}</td>
-                <td>{{$x->cantidad_act}}</td>
-                <td>{{ $x->id_usuario }}</td>
-                <td>{{ $x->id_auth }}</td>
-                <td>{{ $x->id_producto }}</td>
-                <td><a href="../Editar-Reporte/{{ $x->id }}">Editar</a></td>
-                <td><a href="../Baja-Reporte/{{ $x->id }}">Baja</a></td>
-            </tr>
-        @endforeach
-    </table>
-</body>
-
-</html> --}}
-
 @section('content')
 
 
@@ -75,7 +28,6 @@
                     <th scole="col">ID Autorizacion</th>
                     <th scole="col">ID Producto</th>
                     {{-- <th scole="col">Generar</th> --}}
-
                 </tr>
             </thead>
 
@@ -88,13 +40,13 @@
                         <td>{{ $x->id_usuario }}</td>
                         <td>{{ $x->id_auth }}</td>
                         <td>{{ $x->id_producto }}</td>
-                        <td>
-                           {{--  <a href="../PDF-Reporte" target="_blank"
+                       {{--  <td>
+                            <a href="../PDF-Reporte" target="_blank"
                                 class="btn btn-danger mr-1 mb-2 d-block w-100">PDF</a> 
                             <a href="" class="btn btn-success mr-1 mb-2 d-block w-100">PDF</a>
                             <a href="../Exportar-Reporte"
-                                class="btn btn-success mr-1 mb-2 d-block w-100">EXCEL</a>  --}}
-                        </td>
+                                class="btn btn-success mr-1 mb-2 d-block w-100">EXCEL</a> 
+                        </td> --}}
 
 
                     </tr>
@@ -121,10 +73,6 @@
     </div>
 
 @endsection
-
-
-
-
 
 @section('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.3/trix.js"

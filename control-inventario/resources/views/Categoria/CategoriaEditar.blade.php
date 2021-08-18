@@ -9,35 +9,13 @@
     <a href="{{ url('/Categoria-ver') }}" class=" volver btn btn-dark"> Volver</a>
 @endsection
 @section('content')
-
-
-   {{--  <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Editar Categoria</title>
-</head>
-<body>
-
-    <h3>Editar Categoria</h3>
-    <form action="{{url('Categoria-actualizar')}}" method="post">
-    @csrf
-   <input type="hidden" name="id" value="{{$categoria->id}}">
-    Nombre: <input type="text" name="nombre" value="{{$categoria->nombre}}">
-    Descripcion: <input type="text" name="descripcion" value="{{$categoria->descripcion}}">
-    <input type="submit" name="actualizar" value="Actualizar">
-</body>
-</html> --}}
-        
     <h2 class="text-center mb-3 mt-4">Editar Categoria</h2>
-    {{-- <div id="example"></div> --}}
     <div class="contenedor-form mb-5 ">
         <div class="formulario mb-5">
-            <form id="formulario" method="POST" action="{{url('Categoria-actualizar')}}" enctype="multipart/form-data" novalidate>
+            <form id="formulario" method="POST" action="{{ url('Categoria-actualizar') }}" enctype="multipart/form-data"
+                novalidate>
                 @csrf
-                <input type="hidden" name="id" value="{{$categoria->id}}">
+                <input type="hidden" name="id" value="{{ $categoria->id }}">
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
                     <input type="text" name="nombre" class="form-control @error('titulo') is-invalid @enderror" id="titulo"
