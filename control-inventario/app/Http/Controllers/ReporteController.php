@@ -170,7 +170,21 @@ class ReporteController extends Controller
 
         $message = 'Se ha ralizado un movimiento en el inventario';
 
-        WhatsAppMessage::send($message, $to);
+        // WhatsAppMessage::send($message, $to);
+
+        $token = env('TELEGRAM_BOT_TOKEN');
+        $id = env('TELEGRAM_CHAT_ID');
+        $urlMsg = "https://api.telegram.org/bot{$token}/sendMessage";
+        $msg = "Acaba de ajustar el inventario";
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $urlMsg);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "chat_id={$id}&parse_mode=HTML&text=$msg");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $server_output = curl_exec($ch);
+        curl_close($ch);
 
         return redirect()->to('productos/index');
     }

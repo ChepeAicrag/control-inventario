@@ -78,3 +78,7 @@ Route::post('StockP','App\Http\Controllers\ReporteController@stockP');
 /*RUTAS DE EXPORTACION*/
 Route::get('Exportar-Reporte','App\Http\Controllers\ReporteController@exportxlsx');
 Route::get('PDF-Reporte','App\Http\Controllers\ReporteController@exportpdf');
+
+
+// Notification::route('telegram', '909841380')
+//             ->notify(new App\Http\Controllers\Messages\TelegramController());
