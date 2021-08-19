@@ -59,29 +59,29 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        $data=request()->validate(
+        $data = request()->validate(
             [
                 'nombre' => 'required|min:3',
                 'descripcion' => 'required|min:6',
-                'precio_v' =>'required',
+                'precio_v' => 'required',
                 'precio_c' => 'required',
                 'stock' => 'required',
                 'id_categoria' => 'required',
                 'id_catalogo' => 'required',
                 'id_bodega' => 'required'
             ]
-            );
+        );
 
-            $ruta_imagen="";
-            if ($request->file('imagen')->isValid()) {
+        $ruta_imagen = "";
+        if ($request['imagen']) {
 
-                $ruta_imagen=$request['imagen']->store('upload-productos','public');
+            $ruta_imagen = $request['imagen']->store('upload-productos', 'public');
 
-                //Reajustar la imgaeb
-                $img=Image::make(public_path("storage/{$ruta_imagen}"))->resize(400,150);
-                $img->save();
-
-            }
+            //Reajustar la imgaeb
+            $img = Image::make(public_path("storage/{$ruta_imagen}"))->resize(400, 150);
+            #$img = Image::make(storage_path("app/public/{$ruta_imagen}"))->resize(400, 150);
+            $img->save();
+        }
 
 
         Producto::create([
@@ -164,16 +164,14 @@ class ProductoController extends Controller
      */
     public function update(Request $request, Producto $producto)
     {
-        $ruta_imagen="";
-            if ($request['imagen']) {
+        if ($request['imagen']) {
+            $ruta_imagen = $request['imagen']->store('upload-productos', 'public');
 
-                $ruta_imagen=$request['imagen']->store('upload-productos','public');
-
-                //Reajustar la imgaeb
-                $img=Image::make(public_path("storage/{$ruta_imagen}"))->resize(400,150);
-                $img->save();
-
-            }
+            //Reajustar la imgaeb
+            $img = Image::make(public_path("storage/{$ruta_imagen}"))->resize(400, 150);
+            $img->save();
+            $producto->imagen = $ruta_imagen;
+        }
 
         $producto->nombre = $request->nombre;
         $producto->descripcion = $request->descripcion;
@@ -181,7 +179,6 @@ class ProductoController extends Controller
         $producto->precio_c = $request->precio_c;
         $producto->stock = $request->stock;
         $producto->status_delete = $producto->status_delete;
-        $producto->imagen = $ruta_imagen;
         $producto->id_categoria = $request->id_categoria;
         $producto->id_catalogo = $request->id_catalogo;
         $producto->id_bodega = $request->id_bodega;

@@ -129,13 +129,11 @@ class ReporteController extends Controller
 
     public function stock(Producto $producto)
     {
-        $users= User::select('id','nombre')
-        ->where('status_delete',0)
-        ->get();
+        $users = User::select('id', 'nombre')
+            ->where('status_delete', 0)
+            ->get();
 
-        echo $users;
-
-        return view('Stock',compact('producto',$producto,'users',$users));
+        return view('Stock', compact('producto', $producto, 'users', $users));
     }
 
     public function stockP(Request $request)
@@ -175,10 +173,10 @@ class ReporteController extends Controller
         $to = User::select('telefono')->where('id', $id_auth)->get()[0]->telefono;
 
         $message = 'Se ha ralizado un movimiento en el inventario
-El empleado '.Auth::user()->nombre.' acaba de '.$accion.' '.$cantidad.' piezas del producto  '.$stock[0]->nombre.'.
+El empleado ' . Auth::user()->nombre . ' acaba de ' . $accion . ' ' . $cantidad . ' piezas del producto  ' . $stock[0]->nombre . '.
 ¡Gracias por su atención!';
 
-        // WhatsAppMessage::send($message, $to);
+        # WhatsAppMessage::send($message, $to); # Favor de no eliminar esta línea, plis :)
 
         $token = env('TELEGRAM_BOT_TOKEN');
         $id = env('TELEGRAM_CHAT_ID');
