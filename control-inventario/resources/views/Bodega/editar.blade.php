@@ -8,9 +8,7 @@
    <a href="{{ url('/Mostrar-bodega') }}" class=" volver btn btn-dark"> Volver</a>
 @endsection
 @section('content')
-
     <h2 class="text-center mb-3 mt-4">Editar Bodega</h2>
-    {{-- <div id="example"></div> --}}
     <div class="contenedor-form mb-5 ">
         <div class="formulario mb-5">
             <form id="formulario" method="POST" action="{{url('Actualizar-bodega')}}" enctype="multipart/form-data" novalidate>
@@ -29,9 +27,6 @@
                         </span>
                     @enderror
                 </div>
-
-                
-
                 <div class="form-group">
                     <label for="direccion">Dirección</label>
                     <input type="text" name="direccion" class=" mt-2 form-control @error ('direccion') is-invalid @enderror" id="direccion" placeholder="Dirección..." 
@@ -43,8 +38,6 @@
                         </span>
                     @enderror
                 </div>
-                
-
                 <div class="form-group mt-3">
                     <label for="descripcion">Descripción</label>
                     <input type="hidden" id="descripcion" name="descripcion" value="{{$bodega->descripcion}}">
@@ -54,16 +47,11 @@
                             <strong>{{$message}}</strong>
                         </span>
                     @enderror
-                </div>
-
-            
+                </div>       
                 <div class="form-group mt-3">
                     <input type="submit"  class="btn btn-dark" value="Editar bodega" >
                 </div>
-
-
             </form>
-
         </div>
     </div>
     

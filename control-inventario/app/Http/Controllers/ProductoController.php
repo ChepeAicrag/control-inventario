@@ -8,6 +8,7 @@ use App\Models\Categoria;
 use App\Models\Catalogo;
 use App\Models\Bodega;
 use Intervention\Image\Facades\Image;
+
 class ProductoController extends Controller
 {
     /**
@@ -71,8 +72,7 @@ class ProductoController extends Controller
             ]
             );
 
-            $ruta_imagen="";
-            if ($request['imagen']) {
+            if ($request->file('imagen')->isValid()) {
     
                 $ruta_imagen=$request['imagen']->store('upload-productos','public');
     

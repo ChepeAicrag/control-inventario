@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
-@charset "UTF-8";
+/* @charset "UTF-8"; */
 /*
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -2556,6 +2556,11 @@ fieldset:disabled a.btn {
   box-shadow: 0 0 0 0.2rem rgba(97, 157, 206, 0.5);
 }
 
+.btn-warning2 {
+  color: #fff;
+  background-color: #ffed4a;
+  border-color: #ffed4a;
+}
 .btn-warning {
   color: #212529;
   background-color: #ffed4a;
