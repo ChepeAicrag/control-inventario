@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Exports\ReporteExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade as PDF;
-
+use Auth;
 use App\Http\Controllers\Messages\WhatsAppMessage;
 use App\Models\User;
 
@@ -141,7 +141,7 @@ class ReporteController extends Controller
         $id_usuario = $request->id_usuario;
         $id_auth = $request->id_auth;
 
-        $stock = Producto::select('stock')
+        $stock = Producto::select('stock', 'nombre')
             ->where('id', $id)
             ->get();
 
@@ -168,19 +168,20 @@ class ReporteController extends Controller
 
         $to = User::select('telefono')->where('id', $id_auth)->get()[0]->telefono;
 
-        $message = 'Se ha ralizado un movimiento en el inventario';
+        $message = 'Se ha ralizado un movimiento en el inventario
+El empleado '.Auth::user()->nombre.' acaba de '.$accion.' '.$cantidad.' piezas del producto  '.$stock[0]->nombre.'.
+¡Gracias por su atención!';
 
         // WhatsAppMessage::send($message, $to);
 
         $token = env('TELEGRAM_BOT_TOKEN');
         $id = env('TELEGRAM_CHAT_ID');
         $urlMsg = "https://api.telegram.org/bot{$token}/sendMessage";
-        $msg = "Acaba de ajustar el inventario";
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $urlMsg);
         curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, "chat_id={$id}&parse_mode=HTML&text=$msg");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "chat_id={$id}&parse_mode=HTML&text=$message");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
         $server_output = curl_exec($ch);
