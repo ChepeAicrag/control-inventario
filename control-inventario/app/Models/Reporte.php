@@ -13,6 +13,6 @@ class Reporte extends Model
     protected $primarykey = 'id';
     public $timestamps = true;
     protected $fillable = [
-        'accion','cantidad','status_delete','id_usuario','id_auth','id_producto'
+        'accion','cantidad','cantidad_ant','cantidad_act','status_delete','id_usuario','id_auth','id_producto'
     ];
 }

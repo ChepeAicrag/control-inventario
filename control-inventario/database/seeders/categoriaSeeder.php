@@ -18,16 +18,22 @@ class categoriaSeeder extends Seeder
             'nombre' => 'Categoria 1',
             'status_delete' => false,
             'descripcion' => 'es la categoria 1',
+            'created_at'=>date('Y-m-d H:i:s'),
+            'updated_at'=>date('Y-m-d H:i:s')
         ]);
         DB::table('categorias')->insert([
             'nombre' => 'Categoria 3',
             'status_delete' => false,
             'descripcion' => 'es la categoria 3',
+            'created_at'=>date('Y-m-d H:i:s'),
+            'updated_at'=>date('Y-m-d H:i:s')
         ]);
         DB::table('categorias')->insert([
             'nombre' => 'Categoria 2',
             'status_delete' => false,
             'descripcion' => 'es la categoria 2',
+            'created_at'=>date('Y-m-d H:i:s'),
+            'updated_at'=>date('Y-m-d H:i:s')
         ]);
     }
 }

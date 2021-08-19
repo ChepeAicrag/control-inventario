@@ -15,7 +15,10 @@ class CatalogoController extends Controller
      */
     public function index()
     {
-        return view('Catalogo/indice');
+        $ver = Catalogo::select('id','nombre','descripcion','created_at')
+        ->where('status_delete',0)->paginate(3);
+        return view('Catalogo/mostrar',compact('ver'));
+        
     }
 
     /**
@@ -44,7 +47,7 @@ class CatalogoController extends Controller
             'nombre' => $nombre, 'descripcion' => $descripcion, 'status_delete' => $status_Delete
         ]);
 
-        return redirect()->to('Crear-catalogo');
+        return redirect()->to('Catalogo');
     }
 
     /**
@@ -55,11 +58,8 @@ class CatalogoController extends Controller
      */
     public function show(Catalogo $catalogo)
     {
-        //$ver = Catalogo::all();
-        $ver = Catalogo::select('id','nombre','descripcion','created_at')
-        ->where('status_delete',0)
-        ->get();
-        return view('Catalogo/mostrar',compact('ver'));
+        return view('catalogo.show',compact('catalogo',$catalogo));
+        
     }
 
     /**
@@ -92,7 +92,7 @@ class CatalogoController extends Controller
             'nombre' => $nombre, 'descripcion' => $descripcion
         ]);
 
-        return redirect()->to('Mostrar-catalogo');
+        return redirect()->to('Catalogo');
     }
 
     /**
@@ -108,6 +108,6 @@ class CatalogoController extends Controller
         ->update([
             'status_delete' => 1
         ]);
-        return redirect()->to('Mostrar-catalogo');
+        return redirect()->to('Catalogo');
     }
 }
