@@ -16,12 +16,17 @@
             @csrf
             <input type="hidden" name="id" value="{{$producto->id}}">
 
-            <div class="form-group">
+            <div class="form-group mt-3">
                 <label for="accion">Accion</label>
-                <input type="text" name="accion" class="form-control @error('accion') is-invalid @enderror" id="accion" placeholder="Accion">
-                @error('titulo')
+
+                <select name="accion" class="form-control form-control-lg @error('accion') is-invalid @enderror" id="accion">
+                    <option value="">-- Seleccione --</option>
+                    <option value="sumar">Sumar</option>
+                    <option value="restar">Resta</option>
+                </select>
+                @error('id_catalogo')
                 <span class="invalid-feedback d-block" role="alert">
-                    <strong>{{ $message }}</strong>
+                    <p class="errores">{{ 'Seleccione una accion' }}</p>
                 </span>
                 @enderror
             </div>
@@ -50,16 +55,22 @@
                 </span>
                 @enderror
 
-            </div>
-            <div class="form-group mt-3">
-                <label for="id_auth">ID Auth:</label>
-                <input type="number" name="id_auth" step="0.00" value={{ Auth::user()->id }}>
+                <div class="form-group mt-3">
+                    <label for="id_auth">ID Auth:</label>
 
-            </div>
-            <div class="form-group mt-3">
-                <input type="submit" class="btn btn-dark" value="Editar Stock">
-            </div>
+                    <input disabled name="id_auth" class="text-center form-control form-control-lg @error ('id_auth') is-invalid @enderror" id="id " value="{{ Auth::user()->nombre}}">
+                    </input>
 
+                    @error('id_catalogo')
+                    <span class="invalid-feedback d-block" role="alert">
+                        <p class="errores">{{"Seleccione un ID Usuario"}}</p>
+                    </span>
+                    @enderror
+                </div>
+
+                <div class="form-group mt-3">
+                    <input type="submit" class="btn btn-dark" value="Editar Stock">
+                </div>
 
         </form>
 

@@ -143,7 +143,7 @@ class ReporteController extends Controller
         $accion = $request->accion;
         $status_Delete = 0;
         $id_usuario = $request->id_usuario;
-        $id_auth = $request->id_auth;
+        $id_auth = Auth::user()->id;
 
         $stock = Producto::select('stock', 'nombre')
             ->where('id', $id)
