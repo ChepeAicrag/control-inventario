@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Reporte;
 use App\Models\Producto;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Exports\ReporteExport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -126,7 +127,13 @@ class ReporteController extends Controller
 
     public function stock(Producto $producto)
     {
-        return view('Stock',compact('producto'));
+        $users= User::select('id','nombre')
+        ->where('status_delete',0)
+        ->get();
+
+        echo $users;
+
+        return view('Stock',compact('producto',$producto,'users',$users));
     }
 
     public function stockP(Request $request)

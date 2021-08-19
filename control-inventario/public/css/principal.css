@@ -1,11 +1,11 @@
-.opciones{
+.opciones {
     width: 60%;
     flex-direction: row;
     display: flex;
     justify-content: space-around;
 }
 
-.menu{
+.menu {
     margin-top: 40px;
     margin-bottom: 70px;
     height: 100%;
@@ -16,19 +16,15 @@
     align-items: center;
 }
 
-
-
-.card{
+.card {
     height: 25rem;
     width: 23rem;
     box-shadow: 0px 20px 70px rgba(0, 0, 0, 0.774);
     border: none;
     transition: 0.3s;
-    
-    
 }
 
-.card-body{
+.card-body {
     background: black;
     color: blanchedalmond;
 }
@@ -39,17 +35,17 @@
     box-shadow: 0px 15px 70px rgb(204, 189, 189);
 }
 
-img{
+img {
     width: 9rem;
     height: 13rem;
 }
 
-.titulo{
-    font-family: 'EB Garamond', serif;
+.titulo {
+    font-family: "EB Garamond", serif;
     height: 10%;
 }
 
-.letra-negra{
-    font-family: 'STIX Two Text', serif;
+.letra-negra {
+    font-family: "STIX Two Text", serif;
     color: black !important;
 }

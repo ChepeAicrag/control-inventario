@@ -8,6 +8,7 @@ use App\Models\Categoria;
 use App\Models\Catalogo;
 use App\Models\Bodega;
 use Intervention\Image\Facades\Image;
+
 class ProductoController extends Controller
 {
     /**
@@ -29,7 +30,7 @@ class ProductoController extends Controller
      */
     public function create()
     {
-       
+
         $categorias = Categoria::select('id', 'nombre', 'descripcion')
             ->where('status_delete', 0)
             ->get();
@@ -73,13 +74,13 @@ class ProductoController extends Controller
 
             $ruta_imagen="";
             if ($request->file('imagen')->isValid()) {
-    
+
                 $ruta_imagen=$request['imagen']->store('upload-productos','public');
-    
+
                 //Reajustar la imgaeb
                 $img=Image::make(public_path("storage/{$ruta_imagen}"))->resize(400,150);
                 $img->save();
-           
+
             }
 
 
@@ -116,9 +117,9 @@ class ProductoController extends Controller
         $bodegas = Bodega::select('id', 'nombre')
             ->where('id', $producto->id_bodega)
             ->get();
-            
+
         return view('productos.show', compact(
-            'producto', 
+            'producto',
             $producto,
             'categorias',
             $categorias,
@@ -165,13 +166,13 @@ class ProductoController extends Controller
     {
         $ruta_imagen="";
             if ($request['imagen']) {
-    
+
                 $ruta_imagen=$request['imagen']->store('upload-productos','public');
-    
+
                 //Reajustar la imgaeb
                 $img=Image::make(public_path("storage/{$ruta_imagen}"))->resize(400,150);
                 $img->save();
-           
+
             }
 
         $producto->nombre = $request->nombre;

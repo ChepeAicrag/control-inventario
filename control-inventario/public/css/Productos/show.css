@@ -1,4 +1,4 @@
-.receta-meta{
+.receta-meta {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7,7 +7,7 @@
 
 .volver{
     height: 3rem;
-    
+
 }
 
 .contenedor-vista{
@@ -30,7 +30,7 @@
     border-radius: 10px;
 }
 
-.preparacion{
+.preparacion {
     display: flex;
     width: 100%;
     margin-bottom: 30px;
@@ -39,19 +39,19 @@
     align-items: center;
 }
 
-.descripcion{
+.descripcion {
     display: flex;
     width: 100%;
     font-size: 23px;
-    font-family: 'STIX Two Text', serif;
+    font-family: "STIX Two Text", serif;
     margin-bottom: 30px;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
 }
 
-.caracteristicas{
-    font-family: 'STIX Two Text', serif;
+.caracteristicas {
+    font-family: "STIX Two Text", serif;
     font-size: 23px;
     width: 80%;
     display: flex;
@@ -60,11 +60,11 @@
     align-items: center;
 }
 
-.fila{
+.fila {
     width: 100%;
 }
 
-.imagen-receta{
+.imagen-receta {
     box-shadow: 0px 15px 60px rgba(0, 0, 0, 0.89);
 }
 

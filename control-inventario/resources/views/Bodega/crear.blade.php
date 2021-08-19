@@ -38,8 +38,6 @@
                     @enderror
                 </div>
 
-                
-
                 <div class="form-group mt-3">
                     <label for="descripcion">Descripción</label>
                     <input type="hidden" id="descripcion" name="descripcion" value="{{old('descripcion')}}">
