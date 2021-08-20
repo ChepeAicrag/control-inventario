@@ -34,7 +34,7 @@
                 {{$catalogos[0]->nombre}}
             </div>
 
-        <div class="fila">
+        
             <div class=" preparacion">
                 <h4 class="my-3 nom">Precio de Venta: </h4>
                 ${!!$producto->precio_v!!}
@@ -45,27 +45,26 @@
                 ${!!$producto->precio_c!!}
             </div>
 
-        <div class="fila">
+        
             <div class="preparacion">
                 <h3 class="my-3 nom">Bodega: </h3>
                 {{$bodegas[0]->nombre}}
-              </div>
+            </div>
+
             <div class="preparacion">
                 <h3 class="my-3 nom">Stock: </h3>
                 {{$producto->stock}}
             </div>
         </div>
-
-
-
-       <div class="descripcion ">
+    </div>
+    <div class="descripcion ">
             <h3 class="nom">Descripción: </h3>
             {!!$producto->descripcion!!}
-      </div>
+    </div>
+    
+</div>
+<p class="mt-5"></p>
 
-    </div>
-    <p class="mt-5 mtb-5"></p>
-    </div>
 @endsection
 
 @section('scripts')

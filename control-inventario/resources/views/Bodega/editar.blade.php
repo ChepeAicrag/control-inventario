@@ -30,7 +30,7 @@
                         </span>
                     @enderror
                 </div>
-                <div class="form-group">
+                <div class="form-group mt-2">
                     <label for="direccion">Dirección</label>
                     <input type="text" name="direccion" class=" mt-2 form-control @error ('direccion') is-invalid @enderror" id="direccion" placeholder="Dirección..." 
                             value="{{$bodega->direccion}}"

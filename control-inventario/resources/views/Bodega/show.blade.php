@@ -22,25 +22,23 @@
         <div class="caracteristicas">
             <div class="fila">
                 <div class="preparacion">
-                    <h3 class="my-3">ID de la Bodegas: </h3>
+                    <h3 class="my-3 nom ">ID de la Bodegas: </h3>
                     {{ $bodega->id }}
                 </div>
 
                 <div class="preparacion">
-                    <h3 class="my-3 ">Nombre:</h3>
+                    <h3 class="my-3 nom">Nombre:</h3>
                     {{ $bodega->nombre }}
                 </div>
 
-            </div>
-
-            <div class="fila">
+            
                 <div class="mt-3 preparacion">
-                    <h3 class="my-3 ">Descripcion: </h3>
+                    <h3 class="my-3 nom ">Descripcion: </h3>
                     {{ $bodega->descripcion }}
                 </div>
 
                 <div class="preparacion">
-                    <h3 class="my-3 ">Fecha Creacion: </h3>
+                    <h3 class="my-3 nom">Fecha Creacion: </h3>
                     {{ $bodega->created_at }}
                 </div>
             </div>

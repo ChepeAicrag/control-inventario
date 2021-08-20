@@ -20,7 +20,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="nombre">Nombre Receta</label>
-                    <input type="text" name="nombre" class="form-control @error ('nombre') is-invalid @enderror" id="titulo" placeholder="Titulo Receta..."
+                    <input type="text" name="nombre" class="form-control @error ('nombre') is-invalid @enderror" id="nombre" placeholder="Titulo producto..."
                             value="{{$producto->nombre}}"
                     >
                     @error('nombre')
@@ -35,7 +35,7 @@
 
                     <select name="id_categoria"
                             class="form-control form-control-lg @error ('id_categoria') is-invalid @enderror"
-                            id="categoria">
+                            id="id_categoria">
 
                         <option value="">-- Seleccione --</option>
                         @foreach ($categorias as $categoria)
@@ -55,7 +55,7 @@
 
                     <select name="id_catalogo"
                             class="form-control form-control-lg @error ('id_catalogo') is-invalid @enderror"
-                            id="catalogo">
+                            id="id_catalogo">
 
                         <option value="">-- Seleccione --</option>
                         @foreach ($catalogos as $catalogo)
@@ -75,7 +75,7 @@
 
                     <select name="id_bodega"
                             class="form-control form-control-lg @error ('id_bodega') is-invalid @enderror"
-                            id="bodega">
+                            id="id_bodega">
 
                         <option value="">-- Seleccione --</option>
                         @foreach ($bodegas as $bodega)
@@ -104,7 +104,7 @@
 
                 <div class="form-group mt-3">
                     <label for="precio_c">Precio compra</label>
-                    <input type="number" value="{{$producto->precio_c}}" name="precio_c" class="@error ('precio_c') is-invalid @enderror" step="1.00">
+                    <input onkeypress="return validecimal(event);"  value="{{$producto->precio_c}}" name="precio_c" class="@error ('precio_c') is-invalid @enderror" step="1.00">
                     @error('precio_c')
                         <span class="invalid-feedback d-block" role="alert">
                             <p class="errores">{{"Se necesita un número"}}</p>
@@ -114,7 +114,7 @@
 
                 <div class="form-group mt-3">
                     <label for="precio_v">Precio venta</label>
-                    <input type="number" value="{{$producto->precio_v}}" class="@error ('precio_v') is-invalid @enderror" name="precio_v" step="1.00">
+                    <input onkeypress="return validecimal(event);"  value="{{$producto->precio_v}}" class="@error ('precio_v') is-invalid @enderror" name="precio_v" step="1.00">
                     @error('precio_v')
                     <span class="invalid-feedback d-block" role="alert">
                         <p class="errores">{{"Se necesita un número"}}</p>
@@ -160,5 +160,6 @@
 
 @section('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.3/trix.js" integrity="sha512-EkeUJgnk4loe2w6/w2sDdVmrFAj+znkMvAZN6sje3ffEDkxTXDiPq99JpWASW+FyriFah5HqxrXKmMiZr/2iQA==" crossorigin="anonymous" defer></script>
-    <script src="{{asset('js/app.js')}}" defer> </script>
+    <script src="{{ asset('js/app.js') }}" defer> </script>
+    <script src="{{ asset('js/validarCrear.js') }}" defer> </script>
 @endsection

@@ -39,12 +39,20 @@ class CatalogoController extends Controller
      */
     public function store(Request $request)
     {
-        $nombre = $request->nombre;
-        $descripcion = $request->descripcion;
+        $data = request()->validate(
+            [
+                'nombre' => 'required|min:3',
+                'descripcion' => 'required|min:6',
+            ]
+        );
+        $nombre = $data['nombre'];
+        $descripcion = $data['descripcion'];
         $status_Delete = false;
 
         Catalogo::create([
-            'nombre' => $nombre, 'descripcion' => $descripcion, 'status_delete' => $status_Delete
+            'nombre' => $nombre, 
+            'descripcion' => $descripcion, 
+            'status_delete' => $status_Delete
         ]);
 
         return redirect()->to('Catalogo');

@@ -131,7 +131,7 @@
 
                 <div class="form-group mt-3">
                     <label for="stock">Stock</label>
-                    <input onkeypress="return valideKey(event);" id="select_stock" type="number" name="stock" step="1.00"
+                    <input onkeypress="return valideKey(event);" id="select_stock"  name="stock" step="1.00"
                         class="@error('stock') is-invalid @enderror">
                     {{-- <div id="selectNumber" name="stock"></div> --}}
                     @error('stock')
@@ -166,5 +166,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.3/trix.js"
         integrity="sha512-EkeUJgnk4loe2w6/w2sDdVmrFAj+znkMvAZN6sje3ffEDkxTXDiPq99JpWASW+FyriFah5HqxrXKmMiZr/2iQA=="
         crossorigin="anonymous" defer></script>
+    <script src="{{ asset('js/app.js') }}" defer> </script>
     <script src="{{ asset('js/validarCrear.js') }}" defer> </script>
 @endsection

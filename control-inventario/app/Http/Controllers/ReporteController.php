@@ -42,6 +42,8 @@ class ReporteController extends Controller
      */
     public function store(Request $request)
     {
+        
+
         $accion = $request->accion;
         $cantidad = $request->cantidad;
         $cantidad_ant = $request->cantidad_ant;
@@ -138,11 +140,21 @@ class ReporteController extends Controller
 
     public function stockP(Request $request)
     {
+        $data = request()->validate(
+            [
+                'cantidad' => 'required',
+                'accion' => 'required',
+                'id_usuario' => 'required',
+
+
+            ]
+        );
+
         $id = $request->id;
-        $cantidad = $request->cantidad;
-        $accion = $request->accion;
+        $cantidad = $data['cantidad'];
+        $accion = $data['accion'];
         $status_Delete = 0;
-        $id_usuario = $request->id_usuario;
+        $id_usuario = $data['id_usuario'];
         $id_auth = Auth::user()->id;
 
         $stock = Producto::select('stock', 'nombre')

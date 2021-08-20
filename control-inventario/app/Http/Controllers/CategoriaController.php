@@ -38,8 +38,15 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        $nombre= $request->nombre;
-        $descripcion=$request->descripcion;
+        $data = request()->validate(
+            [
+                'nombre' => 'required|min:3',
+                'descripcion' => 'required|min:6',
+            ]
+        );
+
+        $nombre = $data['nombre'];
+        $descripcion = $data['descripcion'];
         $status_delete= false;
 
         Categoria:: create([

@@ -164,6 +164,20 @@ class ProductoController extends Controller
      */
     public function update(Request $request, Producto $producto)
     {
+        
+
+        $data = request()->validate(
+            [
+                'nombre' => 'required|min:3',
+                'descripcion' => 'required|min:6',
+                'precio_v' => 'required',
+                'precio_c' => 'required',
+                'id_categoria' => 'required',
+                'id_catalogo' => 'required',
+                'id_bodega' => 'required'
+            ]
+        );
+
         if ($request['imagen']) {
             $ruta_imagen = $request['imagen']->store('upload-productos', 'public');
 
@@ -173,15 +187,17 @@ class ProductoController extends Controller
             $producto->imagen = $ruta_imagen;
         }
 
-        $producto->nombre = $request->nombre;
-        $producto->descripcion = $request->descripcion;
-        $producto->precio_v = $request->precio_v;
-        $producto->precio_c = $request->precio_c;
+    
+
+        $producto->nombre = $data['nombre'];
+        $producto->descripcion = $data['descripcion'];
+        $producto->precio_v = $data['precio_v'];
+        $producto->precio_c = $data['precio_c'];
         $producto->stock = $producto->stock;
         $producto->status_delete = $producto->status_delete;
-        $producto->id_categoria = $request->id_categoria;
-        $producto->id_catalogo = $request->id_catalogo;
-        $producto->id_bodega = $request->id_bodega;
+        $producto->id_categoria = $data['id_categoria'];
+        $producto->id_catalogo = $data['id_catalogo'];
+        $producto->id_bodega = $data['id_bodega'];
 
         //si el usuario sube una nueva imagen
 

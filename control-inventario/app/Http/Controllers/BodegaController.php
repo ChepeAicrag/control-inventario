@@ -39,9 +39,16 @@ class BodegaController extends Controller
     public function store(Request $request)
     {
         //
-        $nombre = $request->nombre;
-        $descripcion = $request->descripcion;
-        $direccion = $request->direccion;
+        $data = request()->validate(
+            [
+                'nombre' => 'required|min:3',
+                'descripcion' => 'required|min:6',
+                'direccion' => 'required|min:6',
+            ]
+        );
+        $nombre = $data['nombre'];
+        $descripcion = $data['descripcion'];
+        $direccion = $data['direccion'];
 
         Bodega::create([
             'nombre' => $nombre, 'descripcion' => $descripcion, 'direccion' => $direccion, 'status_delete' => 0,
