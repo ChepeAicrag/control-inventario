@@ -6,7 +6,10 @@
     <link href="{{ asset('css/Productos/crear.css') }}" rel="stylesheet">
 @endsection
 @section('botones')
-    <a href="{{ url('/Categoria-ver') }}" class=" volver btn btn-dark"> Volver</a>
+    {{-- <a href="{{ url('/Categoria-ver') }}" class=" volver btn btn-dark"> Volver</a> --}}
+    <div class="regresar">
+        <a href="{{ url('/Categoria-ver') }}" class=" volver"> <img class="imagen" src="/imagenes/regresar.png" /></a>
+    </div>
 @endsection
 
 @section('content')

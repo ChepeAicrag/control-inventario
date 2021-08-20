@@ -8,7 +8,8 @@
 
 @section('botones')
     <div class="regresar">
-        <a href="{{ url('Mostrar-bodega') }}" class=" mt-3 volver"> <img class="imagen" src="../imagenes/regresar.png" /></a>
+        <a href="{{ url('Mostrar-bodega') }}" class=" mt-3 volver"> <img class="imagen"
+                src="../imagenes/regresar.png" /></a>
     </div>
 @endsection
 @section('content')
@@ -22,37 +23,44 @@
         <div class="caracteristicas">
             <div class="fila">
                 <div class="preparacion">
-                    <h3 class="my-3">ID de la Bodegas: </h3>
+                    <h3 class="my-3 nom">ID de la Bodegas: </h3>
                     {{ $bodega->id }}
                 </div>
-
                 <div class="preparacion">
-                    <h3 class="my-3 ">Nombre:</h3>
+                    <h3 class="my-3 nom">Nombre:</h3>
                     {{ $bodega->nombre }}
                 </div>
-
-            </div>
-
-            <div class="fila">
-                <div class="mt-3 preparacion">
-                    <h3 class="my-3 ">Descripcion: </h3>
-                    {{ $bodega->descripcion }}
+                <div class="fila">
+                    <div class="mt-3 preparacion">
+                        <h3 class="my-3 nom">Descripcion: </h3>
+                        {{ $bodega->descripcion }}
+                    </div>
+                    <div class="fila">
+                        <div class="preparacion">
+                            <h3 class="my-3 nom">Fecha Creacion: </h3>
+                            {{ $bodega->created_at }}
+                        </div>
+                    </div>
+                    
+    
                 </div>
-
-                <div class="preparacion">
-                    <h3 class="my-3 ">Fecha Creacion: </h3>
-                    {{ $bodega->created_at }}
-                </div>
             </div>
-
+            
+                
+               
+                   
+                
+           
         </div>
 
+    </div>
 
-    @endsection
 
-    @section('scripts')
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.3/trix.js"
-                integrity="sha512-EkeUJgnk4loe2w6/w2sDdVmrFAj+znkMvAZN6sje3ffEDkxTXDiPq99JpWASW+FyriFah5HqxrXKmMiZr/2iQA=="
-                crossorigin="anonymous" defer></script>
-        <script src="{{ asset('js/app.js') }}" defer> </script>
-    @endsection
+@endsection
+
+@section('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.3/trix.js"
+        integrity="sha512-EkeUJgnk4loe2w6/w2sDdVmrFAj+znkMvAZN6sje3ffEDkxTXDiPq99JpWASW+FyriFah5HqxrXKmMiZr/2iQA=="
+        crossorigin="anonymous" defer></script>
+    <script src="{{ asset('js/app.js') }}" defer> </script>
+@endsection

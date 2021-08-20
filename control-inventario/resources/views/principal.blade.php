@@ -1,4 +1,5 @@
 @extends('layouts.inicio')
+<title>Inicio</title>
 @section('styles')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.3/trix.css" integrity="sha512-pTg+WiPDTz84G07BAHMkDjq5jbLS/AqY0rU/QdugnfeE0+zu0Kjz++0rrtYNK9gtzEZ33p+S53S2skXAZttrug==" crossorigin="anonymous" />
     <link href="{{ asset('css/principal.css') }}" rel="stylesheet">
