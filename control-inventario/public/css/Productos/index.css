@@ -27,6 +27,21 @@
 .imagen{
     height: 3rem;
 }
+.imagen-prod{
+    height: 100px;
+    width: 100px;
+}
+.imagen-cont{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.nombre{
+    width: 250px;
+}
+
 .icono{
     height: 2rem;
 }
@@ -54,3 +69,15 @@
     justify-content: space-around;
 
 }
+.acciones{
+    width: 350px;
+}
+
+.precio{
+    width: 200px;
+}
+
+.id{
+    width: 150px;
+}
+

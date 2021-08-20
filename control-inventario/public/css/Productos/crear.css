@@ -25,7 +25,9 @@ img {
 }
 .formulario {
     width: 70%;
-    background: #70798c;
+    background: #f7e0a0;
+    font-family: "STIX Two Text", serif;
+    color: black;
     padding-left: 6rem;
     padding-right: 6rem;
     padding-top: 2rem;
