@@ -20,14 +20,15 @@
         <a href="{{ url('/inicio') }}" class=" volver"> <img class="imagen" src="/imagenes/regresar.png" /></a>
     </div>
         {{-- <a href="{{ url('/inicio') }}" class=" mt-3 volver btn btn-dark"> Volver</a> --}}
-        <a href="{{ url('/Categoria-alta') }}" class=" mt-3 volver btn btn-secondary"> Agregar Categoria +</a>
+        {{-- <a href="{{ url('/Categoria-alta') }}" class=" mt-3 volver btn btn-secondary"> Agregar Categoria +</a> --}}
+        <a href="{{ url('/Categoria-alta') }}" class=" boton-a mt-4 volver"> <img class="imagen" src="/imagenes/add.png" /> <p class="mt-2 mb-0">Agregar</p></a>
     @endsection
 
     @section('content')
         <div class="col-md-10  mx-auto p-3">
             <h2 class="text-center  mb-3">Categorias</h2>
             <table class="table">
-                <thead class="bg-dark text-light">
+                <thead class="bg-dark text-light text-center">
                     <tr>
                         <th scole="col">ID</th>
                         <th scole="col">Nombre</th>
@@ -39,20 +40,33 @@
 
                 <tbody>
                     @foreach ($ver as $x)
-                        <tr>
+                        <tr class="text-center">
                             <td>{{ $x->id }}</td>
                             <td>{{ $x->nombre }}</td>
                             <td>{!! $x->descripcion !!}</td>
                             <td>{{ $x->created_at }}</td>
-                            <td>
+                            {{-- <td>
                                 <a href="../Categoria-editar/{{ $x->id }}"
                                     class="btn btn-dark mr-1 mb-2 d-block w-100">Editar</a>
                                 <a href="../Categoria/{{ $x->id }}"
                                     class="btn btn-success mr-1 mb-2 d-block w-100">Ver</a>
                                 <a href="../Categoria-baja/{{ $x->id }}"
                                     class="btn btn-danger mr-1 mb-2 d-block w-100">Eliminar</a>
+                            </td> --}}
+                            <td class="acciones">
+                                <div class="botonesacciones">
+                                    <a title="Editar" href="../Categoria-editar/{{ $x->id }}" class="boton-a"><img
+                                            class="icono " src="/imagenes/lapiz.png" /></a>
+    
+                                    <a title="Ver Categoria" href="../Categoria/{{ $x->id }}"
+                                        class="boton-a"><img class="icono" src="/imagenes/ver.png" />
+                                       
+                                    </a>
+    
+                                    <a title="Eliminar" href="../Categoria-baja/{{ $x->id }}" class="boton-a"><img
+                                            class="icono" src="/imagenes/eliminar.png" /> </a>
+                                </div>
                             </td>
-
 
                         </tr>
                     @endforeach

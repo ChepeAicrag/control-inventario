@@ -27,12 +27,12 @@
                 </div>
             
             </div> --}}
-     
+            <div class="descripcion mt-3 ">
+                <h3 class="nom">Descripción: </h3>
+                {!!$catalogo->descripcion!!}
+            </div>
         </div>
-        <div class="descripcion mt-3 ">
-            <h3 class="nom">Descripción: </h3>
-            {!!$catalogo->descripcion!!}
-        </div>
+        
 
     @endsection
 
