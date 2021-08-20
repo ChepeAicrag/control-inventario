@@ -11,6 +11,7 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Auth;
 use App\Http\Controllers\Messages\WhatsAppMessage;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class ReporteController extends Controller
 {
@@ -69,7 +70,14 @@ class ReporteController extends Controller
         $ver = Reporte::select('id', 'accion', 'cantidad', 'cantidad_ant', 'cantidad_act', 'id_usuario', 'id_auth', 'id_producto')
             ->where('status_delete', 0)
             ->paginate(3);
-        return view('Reporte/mostrar', compact('ver'));
+
+        $fechas = Reporte::select(DB::raw("DATE_FORMAT(created_at,'%M %Y') as months"))
+        ->groupByRaw('months')
+        ->get();
+
+        return view('Reporte/mostrar', compact('ver','fechas'));
+        
+        //echo $fechas;
     }
 
     /**
@@ -133,6 +141,7 @@ class ReporteController extends Controller
             ->where('status_delete', 0)
             ->get();
 
+            
         return view('Stock', compact('producto', $producto, 'users', $users));
     }
 
@@ -201,7 +210,7 @@ El empleado ' . Auth::user()->nombre . ' acaba de ' . $accion . ' ' . $cantidad 
 
     public function exportpdf()
     {
-        $ver = Reporte::select('id', 'accion', 'cantidad', 'cantidad_ant', 'cantidad_act', 'id_usuario', 'id_auth', 'id_producto')
+        $ver = Reporte::select('id', 'accion', 'cantidad', 'cantidad_ant', 'cantidad_act', 'id_usuario', 'id_auth', 'id_producto',DB::raw("DATE_FORMAT(created_at,'%d-%M-%Y') as months"))
             ->where('status_delete', 0)
             ->get();
 
