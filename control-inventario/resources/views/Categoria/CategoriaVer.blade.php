@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mostrar Categoria</title>
+    <title>Categoria</title>
 </head>
 
 <body>
@@ -16,7 +16,10 @@
         <link href="{{ asset('css/Productos/index.css') }}" rel="stylesheet">
     @endsection
     @section('botones')
-        <a href="{{ url('/inicio') }}" class=" mt-3 volver btn btn-dark"> Volver</a>
+    <div class="regresar">
+        <a href="{{ url('/inicio') }}" class=" volver"> <img class="imagen" src="/imagenes/regresar.png" /></a>
+    </div>
+        {{-- <a href="{{ url('/inicio') }}" class=" mt-3 volver btn btn-dark"> Volver</a> --}}
         <a href="{{ url('/Categoria-alta') }}" class=" mt-3 volver btn btn-secondary"> Agregar Categoria +</a>
     @endsection
 

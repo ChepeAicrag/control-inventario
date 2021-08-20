@@ -177,7 +177,7 @@ class ProductoController extends Controller
         $producto->descripcion = $request->descripcion;
         $producto->precio_v = $request->precio_v;
         $producto->precio_c = $request->precio_c;
-        $producto->stock = $request->stock;
+        $producto->stock = $producto->stock;
         $producto->status_delete = $producto->status_delete;
         $producto->id_categoria = $request->id_categoria;
         $producto->id_catalogo = $request->id_catalogo;

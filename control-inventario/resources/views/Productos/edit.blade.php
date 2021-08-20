@@ -5,7 +5,10 @@
 @endsection
 
 @section('botones')
-   <a href="{{ url('/productos/index') }}" class=" volver btn btn-dark"> Volver</a>
+   {{-- <a href="{{ url('/productos/index') }}" class=" volver btn btn-dark"> Volver</a> --}}
+   <div class="regresar">
+    <a href="{{ url('/productos/index') }}" class=" volver"> <img class="imagen" src="/imagenes/regresar.png" /></a>
+</div>
 @endsection
 @section('content')
 
@@ -119,11 +122,10 @@
                 @enderror
                 </div>
 
-                <div class="form-group mt-3">
+                {{-- <div class="form-group mt-3">
                     <label for="stock">Stock</label>
-                    <input type="number"  value="{{$producto->stock}}" name="stock" step="1.00">
-
-                </div>
+                    <input disabled type="number"  value="{{$producto->stock}}" name="stock" step="1.00">
+                </div> --}}
 
 
 

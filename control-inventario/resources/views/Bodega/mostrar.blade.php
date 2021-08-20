@@ -14,7 +14,10 @@
 @endsection
 
 @section('botones')
-   <a href="{{ url('/inicio') }}" class=" mt-3 volver btn btn-dark"> Volver</a>
+   {{-- <a href="{{ url('/inicio') }}" class=" mt-3 volver btn btn-dark"> Volver</a> --}}
+   <div class="regresar">
+    <a href="{{ url('/inicio') }}" class=" volver"> <img class="imagen" src="/imagenes/regresar.png" /></a>
+   </div>
    <a href="{{ url('/Crear-bodega') }}" class=" mt-3 volver btn btn-secondary"> Agregar Bodega +</a>
 @endsection
 @section('content')
