@@ -12,9 +12,13 @@
     </div>
     {{-- <a href="{{ url('/inicio') }}" class=" mt-3 volver btn btn-dark"> Volver</a> --}}
     {{-- <a href="../PDF-Reporte" target="_blank" class="mt-3 volver btn btn-danger ">PDF</a> --}}
-    <a  href="../PDF-Reporte" target="_blank" class=" boton-a mt-4 volver"> <img class="imagen" src="/imagenes/pdf.png" /> <p class="mt-2 mb-0">PDF</p></a>
+    <a href="../PDF-Reporte" target="_blank" class=" boton-a mt-4 volver"> <img class="imagen" src="/imagenes/pdf.png" />
+        <p class="mt-2 mb-0">PDF</p>
+    </a>
     {{-- <a href="../Exportar-Reporte" class="mt-3 volver btn btn-success ">EXCEL</a> --}}
-    <a  href="../Exportar-Reporte" class=" boton-a mt-4 volver"> <img class="imagen" src="/imagenes/excel.png" /> <p class="mt-2 mb-0">EXCEL</p></a>
+    <a href="../Exportar-Reporte" class=" boton-a mt-4 volver"> <img class="imagen" src="/imagenes/excel.png" />
+        <p class="mt-2 mb-0">EXCEL</p>
+    </a>
 
     {{-- <a href="{{ url('/Crear-Reporte') }}" class=" mt-3 volver btn btn-secondary"> Agregar Categoria +</a> --}}
 @endsection
@@ -23,7 +27,22 @@
 
     <div class="col-md-10  mx-auto p-3">
         <h2 class="text-center  mb-3">Reporte</h2>
-        <table class="table">
+        <div class="boton-a">
+            <p>Fecha de Creacion:</p>
+            <select name="months" class="form-control form-control-lg @error('months') is-invalid @enderror" id="months">
+                <option value="">-- Seleccione --</option>
+                @foreach ($fechas as $fechas)
+                <option value={{$fechas->months}}>{{$fechas->months}}</option>
+                @endforeach
+            </select>
+            @error('months')
+            <span class="invalid-feedback d-block" role="alert">
+                <p class="errores">{{"Seleccione un usuario"}}</p>
+            </span>
+            @enderror
+        </div>
+
+        <table class="table mt-3">
             <thead class="bg-dark text-light text-center">
                 <tr>
                     <th scole="col">ID</th>
@@ -32,7 +51,7 @@
                     <th scole="col">ID Usuario</th>
                     <th scole="col">ID Autorizacion</th>
                     <th scole="col">ID Producto</th>
-                    {{-- <th scole="col">Generar</th> --}}
+                    <th scole="col">Fecha</th>
                 </tr>
             </thead>
 
@@ -45,6 +64,7 @@
                         <td>{{ $x->id_usuario }}</td>
                         <td>{{ $x->id_auth }}</td>
                         <td>{{ $x->id_producto }}</td>
+                        <td>{{ $x->created_at }}</td>
                         {{-- <td>
                             <a href="../PDF-Reporte" target="_blank"
                                 class="btn btn-danger mr-1 mb-2 d-block w-100">PDF</a> 

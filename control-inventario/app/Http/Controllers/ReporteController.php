@@ -69,7 +69,7 @@ class ReporteController extends Controller
      */
     public function show(Reporte $reporte)
     {
-        $ver = Reporte::select('id', 'accion', 'cantidad', 'cantidad_ant', 'cantidad_act', 'id_usuario', 'id_auth', 'id_producto')
+        $ver = Reporte::select('id', 'accion', 'cantidad', 'cantidad_ant', 'cantidad_act', 'id_usuario', 'id_auth', 'id_producto','created_at')
             ->where('status_delete', 0)
             ->paginate(3);
 
