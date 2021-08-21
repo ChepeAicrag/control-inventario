@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Example 1</title>
     <link rel="stylesheet" href="../public/css/pdf.css">
-    
   </head>
   <body>
     <header class="clearfix">
@@ -27,6 +26,7 @@
                   <th class="service nom">ID Usuario:</th>
                   <th class="service nom">ID Autorizacion:</th>
                   <th class="service nom">ID Producto:</th>
+                  <th class="service nom">Fecha:</th>
                 </tr>
               </thead>
             @foreach ($ver as $x)
@@ -39,6 +39,7 @@
                     <td class="service">{{ $x->id_usuario }}</td>
                     <td class="service">{{ $x->id_auth }}</td>
                     <td class="service">{{ $x->id_producto }}</td>
+                    <td class="service">{{ $x->months }}</td>
                 </tr>
             @endforeach
         </table>

@@ -64,7 +64,7 @@
                         <td>{{ $x->id_usuario }}</td>
                         <td>{{ $x->id_auth }}</td>
                         <td>{{ $x->id_producto }}</td>
-                        <td>{{ $x->created_at }}</td>
+                        <td>{{ $x->months }}</td>
                         {{-- <td>
                             <a href="../PDF-Reporte" target="_blank"
                                 class="btn btn-danger mr-1 mb-2 d-block w-100">PDF</a> 
