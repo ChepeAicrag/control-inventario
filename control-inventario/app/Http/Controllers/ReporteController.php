@@ -43,8 +43,6 @@ class ReporteController extends Controller
      */
     public function store(Request $request)
     {
-        
-
         $accion = $request->accion;
         $cantidad = $request->cantidad;
         $cantidad_ant = $request->cantidad_ant;
@@ -76,6 +74,8 @@ class ReporteController extends Controller
         $fechas = Reporte::select(DB::raw("DATE_FORMAT(created_at,'%M %Y') as months"))
         ->groupByRaw('months')
         ->get();
+
+        
 
         return view('Reporte/mostrar', compact('ver','fechas'));
         
@@ -149,21 +149,11 @@ class ReporteController extends Controller
 
     public function stockP(Request $request)
     {
-        $data = request()->validate(
-            [
-                'cantidad' => 'required',
-                'accion' => 'required',
-                'id_usuario' => 'required',
-
-
-            ]
-        );
-
         $id = $request->id;
-        $cantidad = $data['cantidad'];
-        $accion = $data['accion'];
+        $cantidad = $request->cantidad;
+        $accion = $request->accion;
         $status_Delete = 0;
-        $id_usuario = $data['id_usuario'];
+        $id_usuario = $request->id_usuario;
         $id_auth = Auth::user()->id;
 
         $stock = Producto::select('stock', 'nombre')
@@ -220,14 +210,28 @@ El empleado ' . Auth::user()->nombre . ' acaba de ' . $accion . ' ' . $cantidad 
         return Excel::download(new ReporteExport, 'Reporte.xlsx');
     }
 
-    public function exportpdf()
+    public function exportpdf($months)
     {
+        $fecha=explode(" ",$months,$limit = PHP_INT_MAX);
+        //echo $fecha[1];
+                
+        $meses = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        $numero_mes = 0;
+        for ($i=0; $i < sizeof($meses); $i++) { 
+            if (strcmp($meses[$i],$fecha[0])==0) {
+                $numero_mes = $i+1;
+            }
+        }
+        
         $ver = Reporte::select('id', 'accion', 'cantidad', 'cantidad_ant', 'cantidad_act', 'id_usuario', 'id_auth', 'id_producto',DB::raw("DATE_FORMAT(created_at,'%d-%M-%Y') as months"))
             ->where('status_delete', 0)
+            ->whereMonth('created_at',$numero_mes)
+            ->whereYear('created_at',$fecha[1])
             ->get();
-
+        
         $pdf = PDF::loadView('pdf', compact('ver'));
 
         return $pdf->stream();
+        
     }
 }
