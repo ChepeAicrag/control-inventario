@@ -17,9 +17,10 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/inicio', function () {
+/* Route::get('/inicio', function () {
     return view('principal');
-});
+}); */
+Route::get('/inicio', 'App\Http\Controllers\Controller@vistaInicio');
 
 /* RUTAS DE BODEGEAS */
 Route::get('Crear-bodega', 'App\Http\Controllers\BodegaController@create');
