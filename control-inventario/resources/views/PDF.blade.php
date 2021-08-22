@@ -43,11 +43,8 @@
                 </tr>
             @endforeach
         </table>
-
-
     </main>
     <footer>
-      
     </footer>
   </body>
 </html>

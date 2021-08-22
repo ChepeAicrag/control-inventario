@@ -27,19 +27,27 @@
 
     <div class="col-md-10  mx-auto p-3">
         <h2 class="text-center  mb-3">Reporte</h2>
-        <div class="boton-a">
-            <p>Fecha de Creacion:</p>
-            <select name="months" class="form-control form-control-lg @error('months') is-invalid @enderror" id="months">
-                <option value="">-- Seleccione --</option>
-                @foreach ($fechas as $fechas)
-                <option value={{$fechas->months}}>{{$fechas->months}}</option>
-                @endforeach
-            </select>
-            @error('months')
-            <span class="invalid-feedback d-block" role="alert">
-                <p class="errores">{{"Seleccione un usuario"}}</p>
-            </span>
-            @enderror
+        <p>Fecha de Creacion:</p>
+        <div class="botonesacciones">
+            <div>
+                <select name="months" class="form-control form-control-lg @error('months') is-invalid @enderror" id="months">
+                    <option value="">-- Seleccione --</option>
+                    @foreach ($fechas as $fechas)
+                    <option value={{$fechas->months}}>{{$fechas->months}}</option>
+                    @endforeach    
+                </select>
+                @error('months')
+                <span class="invalid-feedback d-block" role="alert">
+                    <p class="errores">{{"Seleccione un usuario"}}</p>
+                </span>
+                
+                @enderror
+            </div>
+            
+            <div>
+                <button type="button" class="btn btn-dark">Ordenar</button>
+            </div>
+           
         </div>
 
         <table class="table mt-3">
