@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\DB;
 
 class ReporteController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -69,10 +73,20 @@ class ReporteController extends Controller
      */
     public function show(Reporte $reporte)
     {
-        $ver = Reporte::select('id', 'accion', 'cantidad', 'cantidad_ant', 'cantidad_act', 'id_usuario', 'id_auth', 'id_producto',DB::raw("DATE_FORMAT(created_at,'%d-%M-%Y') as months"))
+
+
+        $ver = DB::table('reportes')
+        ->join('productos','productos.id','=','reportes.id_producto')
+        ->join('users','users.id','=','reportes.id_usuario')
+        ->join('users as autori','autori.id','=','reportes.id_auth')
+        ->select('reportes.id', 'reportes.accion', 'reportes.cantidad', 'reportes.cantidad_ant', 'reportes.cantidad_act', 'users.nombre', 'autori.nombre as autorizador', 'productos.nombre as producto',DB::raw("DATE_FORMAT(reportes.created_at,'%d-%M-%Y') as months"))
+        ->where('reportes.status_delete', 0)
+        ->paginate(3);
+
+        /* $ver = Reporte::select('id', 'accion', 'cantidad', 'cantidad_ant', 'cantidad_act', 'id_usuario', 'id_auth', 'id_producto',DB::raw("DATE_FORMAT(created_at,'%d-%M-%Y') as months"))
             ->where('status_delete', 0)
             ->paginate(3);
-
+ */
         $fechas = Reporte::select(DB::raw("DATE_FORMAT(created_at,'%M %Y') as months"))
         ->groupByRaw('months')
         ->get();
@@ -222,8 +236,12 @@ El empleado ' . Auth::user()->nombre . ' acaba de ' . $accion . ' ' . $cantidad 
 
     public function exportpdf()
     {
-        $ver = Reporte::select('id', 'accion', 'cantidad', 'cantidad_ant', 'cantidad_act', 'id_usuario', 'id_auth', 'id_producto',DB::raw("DATE_FORMAT(created_at,'%d-%M-%Y') as months"))
-            ->where('status_delete', 0)
+        $ver = DB::table('reportes')
+        ->join('productos','productos.id','=','reportes.id_producto')
+        ->join('users','users.id','=','reportes.id_usuario')
+        ->join('users as autori','autori.id','=','reportes.id_auth')
+        ->select('reportes.id', 'reportes.accion', 'reportes.cantidad', 'reportes.cantidad_ant', 'reportes.cantidad_act', 'users.nombre', 'autori.nombre as autorizador', 'productos.nombre as producto',DB::raw("DATE_FORMAT(reportes.created_at,'%d-%M-%Y') as months"))
+        ->where('reportes.status_delete', 0)
             ->get();
 
         $pdf = PDF::loadView('pdf', compact('ver'));

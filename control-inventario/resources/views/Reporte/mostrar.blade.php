@@ -1,3 +1,4 @@
+
 @extends('layouts.inicio')
 <title>Reporte</title>
 @section('styles')
@@ -65,13 +66,14 @@
 
             <tbody>
                 @foreach ($ver as $x)
+                
                     <tr class="text-center">
                         <td>{{ $x->id }}</td>
                         <td>{{ $x->accion }}</td>
                         <td>{{ $x->cantidad }}</td>
-                        <td>{{ $x->id_usuario }}</td>
-                        <td>{{ $x->id_auth }}</td>
-                        <td>{{ $x->id_producto }}</td>
+                        <td>{{ $x->nombre }}</td>
+                        <td>{{ $x->autorizador }}</td>
+                        <td>{{ $x->producto }}</td>
                         <td>{{ $x->months }}</td>
                         {{-- <td>
                             <a href="../PDF-Reporte" target="_blank"

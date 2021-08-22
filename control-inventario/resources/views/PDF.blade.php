@@ -36,9 +36,9 @@
                     <td class="service">{{ $x->cantidad }}</td>
                     <td class="service">{{$x->cantidad_ant}}</td>
                     <td class="service">{{$x->cantidad_act}}</td>
-                    <td class="service">{{ $x->id_usuario }}</td>
-                    <td class="service">{{ $x->id_auth }}</td>
-                    <td class="service">{{ $x->id_producto }}</td>
+                    <td class="service">{{ $x->nombre }}</td>
+                    <td class="service">{{ $x->autorizador }}</td>
+                    <td class="service">{{ $x->producto }}</td>
                     <td class="service">{{ $x->months }}</td>
                 </tr>
             @endforeach
