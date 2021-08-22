@@ -205,9 +205,9 @@ El empleado ' . Auth::user()->nombre . ' acaba de ' . $accion . ' ' . $cantidad 
         return redirect()->to('productos/index');
     }
 
-    public function exportxlsx()
+    public function exportxlsx($months)
     {
-        return Excel::download(new ReporteExport, 'Reporte.xlsx');
+        return Excel::download(new ReporteExport($months), 'Reporte.xlsx');
     }
 
     public function exportpdf($months)
