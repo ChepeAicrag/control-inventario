@@ -12,7 +12,7 @@
     </div>
     {{-- <a href="{{ url('/inicio') }}" class=" mt-3 volver btn btn-dark"> Volver</a> --}}
     {{-- <a href="../PDF-Reporte" target="_blank" class="mt-3 volver btn btn-danger ">PDF</a> --}}
-    <a accion="{{ url('../PDF-Reporte') }}" target="_blank" class=" boton-a mt-4 volver" method="POST"> <img class="imagen"
+    <a href="../PDF-Reporte/{{'August'}}"  target="_blank" class=" boton-a mt-4 volver"> <img class="imagen"
             src="/imagenes/pdf.png" />
         <p class="mt-2 mb-0">PDF</p>
     </a>
@@ -32,10 +32,12 @@
         <div class="botonesacciones">
 
             <div>
-                <select name="months" class="form-control form-control-lg @error('months') is-invalid @enderror" id="months">
-                    <option value="">-- Seleccione --</option>
+                <select name="months" class="form-control form-control-lg @error('months') is-invalid @enderror"
+                    id="months">
+                    <option value="" selected="">-- Seleccione --</option>
                     @foreach ($fechas as $fecha)
-                        <option value={{ $fecha->months }} selected="">{{ $fecha->months }}</option>
+                        <option value={{ $fecha->months }} >{{ $fecha->months }}</option>
+                        
                     @endforeach
                 </select>
                 @error('months')
@@ -44,12 +46,15 @@
                     </span>
 
                 @enderror
+                
             </div>
 
             <div>
                 <button type="button" class="btn btn-dark">Ordenar</button>
             </div>
-
+            
+            
+        </a>
         </div>
 
         <table class="table mt-3">

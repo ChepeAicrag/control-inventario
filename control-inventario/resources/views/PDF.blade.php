@@ -12,7 +12,7 @@
 <body>
     <header class="clearfix">
         <div id="logo">
-           {{--  <img src="../public/imagenes/m.png"> --}}
+            <img src="../public/imagenes/m.png">
         </div>
         <h1>Reporte de Inventario</h1>
         
@@ -56,6 +56,7 @@
         </table>
     </main>
     <footer>
+        Generado para el uso Personal de la Empresa.
     </footer>
 </body>
 
