@@ -46,10 +46,16 @@ class ReporteExport implements FromQuery,WithHeadings
             }
         }
         //echo $numero_mes;
-        return Reporte::select('id', 'accion', 'cantidad', 'cantidad_ant', 'cantidad_act', 'id_usuario', 'id_auth', 'id_producto',DB::raw("DATE_FORMAT(created_at,'%d-%M-%Y') as months"))
-            ->where('status_delete', 0)
-            ->whereMonth('created_at',$numero_mes)
-            ->whereYear('created_at',$fecha[1]);
+
+        return DB::table('reportes')
+        ->join('productos','productos.id','=','reportes.id_producto')
+        ->join('users','users.id','=','reportes.id_usuario')
+        ->join('users as autori','autori.id','=','reportes.id_auth')
+        ->select('reportes.id', 'reportes.accion', 'reportes.cantidad', 'reportes.cantidad_ant', 'reportes.cantidad_act', 'users.nombre', 'autori.nombre as autorizador', 'productos.nombre as producto',DB::raw("DATE_FORMAT(reportes.created_at,'%d-%M-%Y') as months"))
+        ->where('reportes.status_delete', 0)
+        ->whereMonth('reportes.created_at',$numero_mes)
+        ->whereYear('reportes.created_at',$fecha[1])
+        ->orderBy('reportes.id');
         
     }
 }

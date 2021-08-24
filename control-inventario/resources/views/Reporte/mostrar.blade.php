@@ -12,12 +12,12 @@
     </div>
     {{-- <a href="{{ url('/inicio') }}" class=" mt-3 volver btn btn-dark"> Volver</a> --}}
     {{-- <a href="../PDF-Reporte" target="_blank" class="mt-3 volver btn btn-danger ">PDF</a> --}}
-    <a href="../PDF-Reporte/{{'August'}}"  target="_blank" class=" boton-a mt-4 volver"> <img class="imagen"
+    <a href="../PDF-Reporte/{{'August 2021'}}"  target="_blank" class=" boton-a mt-4 volver"> <img class="imagen"
             src="/imagenes/pdf.png" />
         <p class="mt-2 mb-0">PDF</p>
     </a>
     {{-- <a href="../Exportar-Reporte" class="mt-3 volver btn btn-success ">EXCEL</a> --}}
-    <a href="../Exportar-Reporte/" class=" boton-a mt-4 volver"> <img class="imagen" src="/imagenes/excel.png" />
+    <a href="../Exportar-Reporte/{{'August 2021'}}" class=" boton-a mt-4 volver"> <img class="imagen" src="/imagenes/excel.png" />
         <p class="mt-2 mb-0">EXCEL</p>
     </a>
 
