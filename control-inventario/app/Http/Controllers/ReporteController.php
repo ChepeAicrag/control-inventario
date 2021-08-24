@@ -12,7 +12,7 @@ use Auth;
 use App\Http\Controllers\Messages\WhatsAppMessage;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
-
+use App\Http\Controllers\console;
 class ReporteController extends Controller
 {
     public function __construct(){
@@ -224,11 +224,18 @@ El empleado ' . Auth::user()->nombre . ' acaba de ' . $accion . ' ' . $cantidad 
         return Excel::download(new ReporteExport($months), 'Reporte.xlsx');
     }
 
-    public function exportpdf($months)
+    public function exportpdf(Request $request)
     {
+        echo $request->url();
+        echo $request->months;
+        $mes=$request->input('name','months');
+        /* $mes='August 2021'; */
 
-        $fecha=explode(" ",$months,$limit = PHP_INT_MAX);
-        //echo $fecha[1];
+        
+        
+        $fecha=explode(" ",$mes,$limit = PHP_INT_MAX);
+        
+        
                 
         $meses = ["January","February","March","April","May","June","July","August","September","October","November","December"];
         $numero_mes = 0;
@@ -242,13 +249,16 @@ El empleado ' . Auth::user()->nombre . ' acaba de ' . $accion . ' ' . $cantidad 
             ->where('status_delete', 0)
             ->whereMonth('created_at',$numero_mes)
             ->whereYear('created_at',$fecha[1])
-        $ver = DB::table('reportes')
+
+            
+        /* $ver = DB::table('reportes')
         ->join('productos','productos.id','=','reportes.id_producto')
         ->join('users','users.id','=','reportes.id_usuario')
         ->join('users as autori','autori.id','=','reportes.id_auth')
         ->select('reportes.id', 'reportes.accion', 'reportes.cantidad', 'reportes.cantidad_ant', 'reportes.cantidad_act', 'users.nombre', 'autori.nombre as autorizador', 'productos.nombre as producto',DB::raw("DATE_FORMAT(reportes.created_at,'%d-%M-%Y') as months"))
         ->where('reportes.status_delete', 0)
-
+        ->whereMonth('created_at',$numero_mes)
+        ->whereYear('created_at',$fecha[1]) */
             ->get();
         
         $pdf = PDF::loadView('pdf', compact('ver'));

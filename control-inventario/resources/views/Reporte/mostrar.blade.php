@@ -1,4 +1,3 @@
-
 @extends('layouts.inicio')
 <title>Reporte</title>
 @section('styles')
@@ -13,11 +12,12 @@
     </div>
     {{-- <a href="{{ url('/inicio') }}" class=" mt-3 volver btn btn-dark"> Volver</a> --}}
     {{-- <a href="../PDF-Reporte" target="_blank" class="mt-3 volver btn btn-danger ">PDF</a> --}}
-    <a href="../PDF-Reporte" target="_blank" class=" boton-a mt-4 volver"> <img class="imagen" src="/imagenes/pdf.png" />
+    <a accion="{{ url('../PDF-Reporte') }}" target="_blank" class=" boton-a mt-4 volver" method="POST"> <img class="imagen"
+            src="/imagenes/pdf.png" />
         <p class="mt-2 mb-0">PDF</p>
     </a>
     {{-- <a href="../Exportar-Reporte" class="mt-3 volver btn btn-success ">EXCEL</a> --}}
-    <a href="../Exportar-Reporte" class=" boton-a mt-4 volver"> <img class="imagen" src="/imagenes/excel.png" />
+    <a href="../Exportar-Reporte/" class=" boton-a mt-4 volver"> <img class="imagen" src="/imagenes/excel.png" />
         <p class="mt-2 mb-0">EXCEL</p>
     </a>
 
@@ -30,25 +30,26 @@
         <h2 class="text-center  mb-3">Reporte</h2>
         <p>Fecha de Creacion:</p>
         <div class="botonesacciones">
+
             <div>
                 <select name="months" class="form-control form-control-lg @error('months') is-invalid @enderror" id="months">
                     <option value="">-- Seleccione --</option>
-                    @foreach ($fechas as $fechas)
-                    <option value={{$fechas->months}}>{{$fechas->months}}</option>
-                    @endforeach    
+                    @foreach ($fechas as $fecha)
+                        <option value={{ $fecha->months }} selected="">{{ $fecha->months }}</option>
+                    @endforeach
                 </select>
                 @error('months')
-                <span class="invalid-feedback d-block" role="alert">
-                    <p class="errores">{{"Seleccione un usuario"}}</p>
-                </span>
-                
+                    <span class="invalid-feedback d-block" role="alert">
+                        <p class="errores">{{ 'Seleccione un usuario' }}</p>
+                    </span>
+
                 @enderror
             </div>
-            
+
             <div>
                 <button type="button" class="btn btn-dark">Ordenar</button>
             </div>
-           
+
         </div>
 
         <table class="table mt-3">
@@ -66,7 +67,7 @@
 
             <tbody>
                 @foreach ($ver as $x)
-                
+
                     <tr class="text-center">
                         <td>{{ $x->id }}</td>
                         <td>{{ $x->accion }}</td>
