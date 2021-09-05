@@ -14,7 +14,9 @@ class BodegaController extends Controller
      */
     public function index()
     {
-        //
+        $ver = Bodega::select('id', 'nombre', 'descripcion', 'direccion', 'created_at')
+        ->where('status_delete', 0)->paginate(3);
+        return view('Bodega/mostrar', compact('ver'));
     }
 
     /**
@@ -37,15 +39,22 @@ class BodegaController extends Controller
     public function store(Request $request)
     {
         //
-        $nombre = $request->nombre;
-        $descripcion = $request->descripcion;
-        $direccion = $request->direccion;
+        $data = request()->validate(
+            [
+                'nombre' => 'required|min:3',
+                'descripcion' => 'required|min:6',
+                'direccion' => 'required|min:6',
+            ]
+        );
+        $nombre = $data['nombre'];
+        $descripcion = $data['descripcion'];
+        $direccion = $data['direccion'];
 
         Bodega::create([
             'nombre' => $nombre, 'descripcion' => $descripcion, 'direccion' => $direccion, 'status_delete' => 0,
         ]);
 
-        return redirect()->to('Crear-bodega');
+        return redirect()->to('Mostrar-bodega');
     }
 
     /**
@@ -56,10 +65,7 @@ class BodegaController extends Controller
      */
     public function show(Bodega $bodega)
     {
-        $ver = Bodega::select('id', 'nombre', 'descripcion', 'direccion', 'created_at')
-            ->where('status_delete', 0)
-            ->get();
-        return view('Bodega/mostrar', compact('ver'));
+        return view('bodega.show',compact('bodega',$bodega));
     }
 
     /**

@@ -20,22 +20,44 @@ body {
     font-family: "Fredoka One", cursive;
     width: 100%;
     height: 100%;
-    margin: 0;
+    margin-top:50px;
     min-height:100%;
+    /* background: linear-gradient(to bottom,black); */
+    /* background:#dad2bc; */
+    background: linear-gradient(90deg, #dad2bc 0%, rgb(224, 223, 223) 70%, #dad2bc 100%);
+    
 }
 
+.nav-header{
+    background:#252323;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 999;
+    color: cornsilk !important;
+}
 
+.letra{
+    color: cornsilk !important;
+    font-family: 'STIX Two Text', serif;
+}
 .contenido{
-   height: 100%;
+   height: auto;
    width: 100%;
+   margin-bottom: 70px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
 }
+
 
 .botones{
     display: flex;
     height: 10%;
     width: 100%;
     justify-content: space-around;
-    
 }
 
 .principal{
@@ -43,4 +65,42 @@ body {
    flex-direction: column;
    height: 100%;
    width: 100%;
+}
+
+nav{
+    font-family: 'EB Garamond', serif;
+    box-shadow: 0px 15px 60px rgba(0, 0, 0, 0.89);
+}
+
+.footer-inicio{
+    background:#252323;
+    color: cornsilk;
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+.posicion{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.text-blanco{
+  color: blanchedalmond !important;
+  font-size: 19px;
+}
+
+.dropdown-menu{
+    background:#252323;
+   
+}
+.dropdown-item{
+    color: cornsilk !important;
+}
+
+.dropdown-item:hover{
+    background:#5c5b5b;
 }

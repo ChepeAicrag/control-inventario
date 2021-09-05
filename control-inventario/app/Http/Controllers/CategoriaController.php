@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Redirect;
 
 class CategoriaController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +19,9 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
+        $ver=Categoria::select('id','nombre','descripcion','created_at')
+        ->where('status_delete',0)->paginate(3);
+        return view('Categoria/CategoriaVer',compact('ver'));
     }
 
     /**
@@ -36,8 +42,15 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        $nombre= $request->nombre;
-        $descripcion=$request->descripcion;
+        $data = request()->validate(
+            [
+                'nombre' => 'required|min:3',
+                'descripcion' => 'required|min:6',
+            ]
+        );
+
+        $nombre = $data['nombre'];
+        $descripcion = $data['descripcion'];
         $status_delete= false;
 
         Categoria:: create([
@@ -45,7 +58,7 @@ class CategoriaController extends Controller
             'descripcion' => $descripcion, 
             'status_delete' => $status_delete
         ]);
-        return redirect()->to('Categoria-alta');
+        return redirect()->to('Categoria-ver');
     }
 
     /**
@@ -56,10 +69,7 @@ class CategoriaController extends Controller
      */
     public function show(Categoria $categoria)
     {
-        $verCategoria=Categoria::select('id','nombre','descripcion','created_at')
-        -> where('status_delete',0)
-        ->get();
-        return view ('Categoria/CategoriaVer')->with('categoria',$verCategoria);
+        return view('categoria.show',compact('categoria',$categoria));
     }
 
     /**

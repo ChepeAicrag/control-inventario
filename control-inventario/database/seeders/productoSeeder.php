@@ -25,6 +25,8 @@ class productoSeeder extends Seeder
             'id_categoria' => 1,
             'id_catalogo' => 1,
             'descripcion' => 'es una llanta',
+            'created_at'=>date('Y-m-d H:i:s'),
+            'updated_at'=>date('Y-m-d H:i:s')
         ]);
 
         DB::table('productos')->insert([
@@ -38,6 +40,8 @@ class productoSeeder extends Seeder
             'id_categoria' => 2,
             'id_catalogo' => 2,
             'descripcion' => 'es una tuerca',
+            'created_at'=>date('Y-m-d H:i:s'),
+            'updated_at'=>date('Y-m-d H:i:s')
         ]);
 
         DB::table('productos')->insert([
@@ -51,6 +55,8 @@ class productoSeeder extends Seeder
             'id_categoria' => 3,
             'id_catalogo' => 3,
             'descripcion' => 'es una llanta',
+            'created_at'=>date('Y-m-d H:i:s'),
+            'updated_at'=>date('Y-m-d H:i:s')
         ]);
     }
 }

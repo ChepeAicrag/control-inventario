@@ -1,3 +1,56 @@
-.volver{
-    height: 2.5rem;
+.volver {
+    height: 3rem;
 }
+
+.regresar {
+    height: 100%;
+    width: 85%;
+    display: flex;
+    margin-left: 10px;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+img {
+    height: 3rem;
+}
+
+.contenedor-form {
+    height: 100%;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.formulario {
+    width: 70%;
+    background: #f3db99;
+    font-family: "STIX Two Text", serif;
+    color: black;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border-radius: 20px;
+    box-shadow: 0px 20px 70px rgba(6, 0, 22, 0.808);
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.errores {
+    color: brown;
+}
+
+
+@media (max-width: 1170px) {
+    trix-toolbar .trix-button-row {
+        display: flex;
+       flex-direction: column;
+    }
+}
+

@@ -4,3 +4,79 @@
 .volver{
     height: 2.5rem;
 }
+
+.table{
+    background:#f5f1ed;
+    color: rgb(0, 0, 0);
+    font-family: 'STIX Two Text', serif;
+    box-shadow: 0px 20px 70px rgba(0, 0, 0, 0.65);
+}
+
+.regresar {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    margin-left: 10px;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 14px;
+}
+
+
+.imagen{
+    height: 3rem;
+}
+.imagen-prod{
+    height: 100px;
+    width: 100px;
+}
+.imagen-cont{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.nombre{
+    width: 250px;
+}
+
+.icono{
+    height: 2rem;
+}
+.boton-a{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color: #000;
+    text-decoration: none;
+    align-items: center;
+}
+/* .boton-a:hover{
+    background: #000;
+    color: #fff;
+    
+} */
+
+.textoblanco{
+    color: #fff;
+}
+.botonesacciones{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.acciones{
+    width: 350px;
+}
+
+.precio{
+    width: 200px;
+}
+
+.id{
+    width: 150px;
+}
+
