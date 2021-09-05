@@ -4,7 +4,10 @@
 <link href="{{ asset('css/Productos/crear.css') }}" rel="stylesheet">
 @endsection
 @section('botones')
-<a href="{{ url('/productos/index') }}" class=" volver btn btn-dark"> Volver</a>
+{{-- <a href="{{ url('/productos/index') }}" class=" volver btn btn-dark"> Volver</a> --}}
+<div class="regresar">
+    <a href="{{ url('/productos/index') }}" class=" volver"> <img class="imagen" src="/imagenes/regresar.png" /></a>
+</div>
 @endsection
 
 @section('content')
@@ -24,7 +27,7 @@
                     <option value="sumar">Sumar</option>
                     <option value="restar">Resta</option>
                 </select>
-                @error('id_catalogo')
+                @error('accion')
                 <span class="invalid-feedback d-block" role="alert">
                     <p class="errores">{{ 'Seleccione una accion' }}</p>
                 </span>
@@ -33,7 +36,12 @@
 
             <div class="form-group mt-3">
                 <label for="cantidad">Cantidad</label>
-                <input type="number" name="cantidad" step="1.00">
+                <input onkeypress="return valideKey(event);"  name="cantidad" step="1.00">
+                @error('cantidad')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <p class="errores">{{ 'Se necesita un número' }}</p>
+                        </span>
+                @enderror
 
             </div>
             <div class="form-group mt-3">
@@ -61,11 +69,7 @@
                     <input disabled name="id_auth" class="text-center form-control form-control-lg @error ('id_auth') is-invalid @enderror" id="id " value="{{ Auth::user()->nombre}}">
                     </input>
 
-                    @error('id_catalogo')
-                    <span class="invalid-feedback d-block" role="alert">
-                        <p class="errores">{{"Seleccione un ID Usuario"}}</p>
-                    </span>
-                    @enderror
+                   
                 </div>
 
                 <div class="form-group mt-3">

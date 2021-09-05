@@ -1,5 +1,5 @@
 .opciones {
-    width: 60%;
+    width: 65%;
     flex-direction: row;
     display: flex;
     justify-content: space-around;
@@ -48,4 +48,24 @@ img {
 .letra-negra {
     font-family: "STIX Two Text", serif;
     color: black !important;
+}
+
+@media (max-width: 1100px) {
+    .opciones {
+        width: 100%;
+        flex-direction:row;
+        display: flex;
+        align-items: center;
+    }
+}
+@media (max-width: 750px) {
+    .opciones {
+        width: 60%;
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+    }
+    .card {
+        margin-bottom: 15px;
+    }
 }

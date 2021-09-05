@@ -5,7 +5,10 @@
 @endsection
 
 @section('botones')
-   <a href="{{ url('/Mostrar-bodega') }}" class=" volver btn btn-dark"> Volver</a>
+   {{-- <a href="{{ url('/Mostrar-bodega') }}" class=" volver btn btn-dark"> Volver</a> --}}
+   <div class="regresar">
+    <a href="{{ url('/Mostrar-bodega') }}" class=" volver"> <img class="imagen" src="/imagenes/regresar.png" /></a>
+</div>
 @endsection
 @section('content')
     <h2 class="text-center mb-3 mt-4">Editar Bodega</h2>
@@ -27,7 +30,7 @@
                         </span>
                     @enderror
                 </div>
-                <div class="form-group">
+                <div class="form-group mt-2">
                     <label for="direccion">Dirección</label>
                     <input type="text" name="direccion" class=" mt-2 form-control @error ('direccion') is-invalid @enderror" id="direccion" placeholder="Dirección..." 
                             value="{{$bodega->direccion}}"

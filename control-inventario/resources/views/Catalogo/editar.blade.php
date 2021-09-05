@@ -5,7 +5,10 @@
 @endsection
 
 @section('botones')
-   <a href="{{ url('/Catalogo') }}" class=" volver btn btn-dark"> Volver</a>
+   {{-- <a href="{{ url('/Catalogo') }}" class=" volver btn btn-dark"> Volver</a> --}}
+   <div class="regresar">
+    <a href="{{ url('/Catalogo') }}" class=" volver"> <img class="imagen" src="/imagenes/regresar.png" /></a>
+</div>
 @endsection
 @section('content')
 

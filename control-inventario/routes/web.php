@@ -17,9 +17,10 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/inicio', function () {
+/* Route::get('/inicio', function () {
     return view('principal');
-});
+}); */
+Route::get('/inicio', 'App\Http\Controllers\Controller@vistaInicio');
 
 /* RUTAS DE BODEGEAS */
 Route::get('Crear-bodega', 'App\Http\Controllers\BodegaController@create');
@@ -75,8 +76,8 @@ Route::get('Stock/{producto}', 'App\Http\Controllers\ReporteController@stock');
 Route::post('StockP', 'App\Http\Controllers\ReporteController@stockP')->name('stock.show');
 
 /*RUTAS DE EXPORTACION*/
-Route::get('Exportar-Reporte', 'App\Http\Controllers\ReporteController@exportxlsx');
-Route::get('PDF-Reporte', 'App\Http\Controllers\ReporteController@exportpdf');
+Route::get('Exportar-Reporte/{months}', 'App\Http\Controllers\ReporteController@exportxlsx');
+Route::get('PDF-Reporte/{months}', 'App\Http\Controllers\ReporteController@exportpdf');
 
 
 #Notification::route('telegram', '909841380')

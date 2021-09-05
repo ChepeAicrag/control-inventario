@@ -25,12 +25,14 @@ img {
 }
 .formulario {
     width: 70%;
-    background: #70798c;
-    padding-left: 6rem;
-    padding-right: 6rem;
+    background: #f3db99;
+    font-family: "STIX Two Text", serif;
+    color: black;
+    padding-left: 5rem;
+    padding-right: 5rem;
     padding-top: 2rem;
     padding-bottom: 2rem;
-    border-radius: 10px;
+    border-radius: 20px;
     box-shadow: 0px 20px 70px rgba(6, 0, 22, 0.808);
 }
 
@@ -43,3 +45,12 @@ img {
 .errores {
     color: brown;
 }
+
+
+@media (max-width: 1170px) {
+    trix-toolbar .trix-button-row {
+        display: flex;
+       flex-direction: column;
+    }
+}
+

@@ -5,12 +5,16 @@
 @endsection
 
 @section('botones')
-   <a href="{{ url('/Mostrar-bodega') }}" class=" volver btn btn-dark"> Volver</a>
+   {{-- <a href="{{ url('/Mostrar-bodega') }}" class=" volver btn btn-dark"> Volver</a> --}}
+   <div class="regresar">
+    <a href="{{ url('/Mostrar-bodega') }}" class=" volver"> <img class="imagen" src="/imagenes/regresar.png" /></a>
+    
+</div>
 @endsection
 @section('content')
     <div class="contenedor-form">
        
-        <div class="formulario">
+        <div class="mt-3 formulario">
             <h2 class="text-center mb-5">Nueva Bodega</h2>
             <form id="formulario" class="" action="{{url('Guardar-bodega')}}" method="post" enctype="multipart/form-data" novalidate>
                 @csrf
@@ -26,7 +30,7 @@
                     @enderror
                 </div>
 
-                <div class="form-group">
+                <div class="form-group mt-2">
                     <label for="direccion">Dirección</label>
                     <input type="text" name="direccion" class=" mt-2 form-control @error ('direccion') is-invalid @enderror" id="direccion" placeholder="Dirección..." 
                             value={{old('direccion')}}

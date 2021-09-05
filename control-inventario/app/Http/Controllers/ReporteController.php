@@ -11,9 +11,14 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Auth;
 use App\Http\Controllers\Messages\WhatsAppMessage;
 use App\Models\User;
-
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\console;
 class ReporteController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -66,10 +71,29 @@ class ReporteController extends Controller
      */
     public function show(Reporte $reporte)
     {
-        $ver = Reporte::select('id', 'accion', 'cantidad', 'cantidad_ant', 'cantidad_act', 'id_usuario', 'id_auth', 'id_producto')
+
+
+        $ver = DB::table('reportes')
+        ->join('productos','productos.id','=','reportes.id_producto')
+        ->join('users','users.id','=','reportes.id_usuario')
+        ->join('users as autori','autori.id','=','reportes.id_auth')
+        ->select('reportes.id', 'reportes.accion', 'reportes.cantidad', 'reportes.cantidad_ant', 'reportes.cantidad_act', 'users.nombre', 'autori.nombre as autorizador', 'productos.nombre as producto',DB::raw("DATE_FORMAT(reportes.created_at,'%d-%M-%Y') as months"))
+        ->where('reportes.status_delete', 0)
+        ->paginate(3);
+
+        /* $ver = Reporte::select('id', 'accion', 'cantidad', 'cantidad_ant', 'cantidad_act', 'id_usuario', 'id_auth', 'id_producto',DB::raw("DATE_FORMAT(created_at,'%d-%M-%Y') as months"))
             ->where('status_delete', 0)
             ->paginate(3);
-        return view('Reporte/mostrar', compact('ver'));
+ */
+        $fechas = Reporte::select(DB::raw("DATE_FORMAT(created_at,'%M %Y') as months"))
+        ->groupByRaw('months')
+        ->get();
+
+        
+
+        return view('Reporte/mostrar', compact('ver','fechas'));
+        
+        //echo $fechas;
     }
 
     /**
@@ -133,6 +157,7 @@ class ReporteController extends Controller
             ->where('status_delete', 0)
             ->get();
 
+            
         return view('Stock', compact('producto', $producto, 'users', $users));
     }
 
@@ -194,19 +219,53 @@ El empleado ' . Auth::user()->nombre . ' acaba de ' . $accion . ' ' . $cantidad 
         return redirect()->to('productos/index');
     }
 
-    public function exportxlsx()
+    public function exportxlsx($months)
     {
-        return Excel::download(new ReporteExport, 'Reporte.xlsx');
+        return Excel::download(new ReporteExport($months), 'Reporte.xlsx');
     }
 
-    public function exportpdf()
-    {
-        $ver = Reporte::select('id', 'accion', 'cantidad', 'cantidad_ant', 'cantidad_act', 'id_usuario', 'id_auth', 'id_producto')
+    public function exportpdf(Request $request)
+    {   
+        
+        /* echo $request->url();
+        echo $request->months;
+        $mes=$request->input('name','months'); */
+        $mes='August 2021';
+
+        
+        
+        $fecha=explode(" ",$mes,$limit = PHP_INT_MAX);
+        
+                
+        $meses = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        $numero_mes = 0;
+        for ($i=0; $i < sizeof($meses); $i++) { 
+            if (strcmp($meses[$i],$fecha[0])==0) {
+                $numero_mes = $i+1;
+            }
+        }
+        
+       /*  $ver = Reporte::select('id', 'accion', 'cantidad', 'cantidad_ant', 'cantidad_act', 'id_usuario', 'id_auth', 'id_producto',DB::raw("DATE_FORMAT(created_at,'%d-%M-%Y') as months"))
             ->where('status_delete', 0)
-            ->get();
+            ->whereMonth('created_at',$numero_mes)
+            ->whereYear('created_at',$fecha[1]) */
+
+            
+        $ver = DB::table('reportes')
+        ->join('productos','productos.id','=','reportes.id_producto')
+        ->join('users','users.id','=','reportes.id_usuario')
+        ->join('users as autori','autori.id','=','reportes.id_auth')
+        ->select('reportes.id', 'reportes.accion', 'reportes.cantidad', 'reportes.cantidad_ant', 'reportes.cantidad_act', 'users.nombre', 'autori.nombre as autorizador', 'productos.nombre as producto',DB::raw("DATE_FORMAT(reportes.created_at,'%d-%M-%Y') as months"))
+        ->where('reportes.status_delete', 0)
+        ->whereMonth('reportes.created_at',$numero_mes)
+        ->whereYear('reportes.created_at',$fecha[1])
+        ->get();
+        
+
 
         $pdf = PDF::loadView('pdf', compact('ver'));
 
-        return $pdf->stream();
+        return $pdf->stream(); 
+        
     }
 }
